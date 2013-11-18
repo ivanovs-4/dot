@@ -1,0 +1,18 @@
+[user]
+	name = Sergey Ivanov
+	email = seiv@yandex-team.ru
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore_global
+[color]
+	interactive = auto
+	diff = auto
+	status = auto
+	branch = auto
+[push]
+	default = tracking
+
+[grep]
+	lineNumber = true
+[diff]
+	algorithm = --histogram

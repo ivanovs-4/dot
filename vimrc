@@ -15,12 +15,11 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 set ruler
-set scrolloff=3
-set sidescrolloff=5
+set scrolloff=7
+set sidescrolloff=9
 set display+=lastline
 
 set hlsearch
-" set infercase
 set incsearch
 set ignorecase
 set smartcase
@@ -33,20 +32,21 @@ set linebreak
 set autowriteall
 set autoread
 set wildmenu
-set wildmode=full:list
+set wildmode=list:full
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.log
 
-" " Show full tags when doing search completion
-" set showfulltag
+"" Show full tags when doing search completion
+"set showfulltag
 "
-" " Speed up macros
-" set lazyredraw
+"" Speed up macros
+"set lazyredraw
 
 " Turn off swap files
 set nobackup
 set updatecount=0
 
 set path=**
+set suffixesadd+=.py
 
 " turn off octal numbers for <C-a>, <C-x>
 set nrformats-=octal
@@ -57,7 +57,7 @@ set shiftround
 " set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set shell=/bin/bash
 
-set fileformats+=mac
+set fileformats=unix
 
 set tabpagemax=9
 
@@ -93,7 +93,6 @@ color iv-color
 " vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " russian
-" set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЖ;ABCDEFGHIJKLMNOPQRSTUVWXYZ:,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 " all keys but leader \ (ё)
 set langmap=ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЁ[ЯЧСМИТЬБЮ?;QWERTYUIOP{}ASDFGHJKL:\"\|~ZXCVBNM<>?,йцукенгшщзхъфывапролджэ]ячсмитьбю/;qwertyuiop[]asdfghjkl\;'`zxcvbnm\\\,./
 
@@ -131,7 +130,7 @@ nnoremap <leader>T :!ctags -R .<cr>
 " Python
 
 " strip trailing space in python files
-autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
+" autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
 
 " to python class begin
 nnoremap [c ?^class <cr>
@@ -145,27 +144,41 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 filetype plugin indent on " обязательно!
 
-" Bundle 'python-imports.vim'
-Bundle 'vim-scripts/indentpython.vim'
-" Bundle 'vim-ipython'
-" Bundle 'klen/python-mode.git'
+" Bundle 'kana/vim-textobj-entire'
 
+" Bundle 'ervandew/supertab'
 Bundle 'ervandew/screen'
 nnoremap <Leader>s :ScreenSend<cr>
 vnoremap <Leader>s :ScreenSend<cr>
 nnoremap <Leader>ss :ScreenShell<cr>
 nnoremap <Leader>sq :ScreenQuit<cr>
 
-Bundle 'edsono/vim-matchit'
+" Bundle 'edsono/vim-matchit'
+filetype plugin on
+runtime macros/matchit.vim
 
+" Bundle 'vim-scripts/L9'
+" Bundle 'vim-scripts/FuzzyFinder'
+
+" Bundle 'kevinw/pyflakes-vim'
+Bundle 'vim-scripts/indentpython.vim'
+
+Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-commentary.git'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-unimpaired.git'
 Bundle 'tpope/vim-obsession'
 Bundle 'tpope/vim-speeddating'
+Bundle 'tpope/vim-surround'
 Bundle 'pythonhelper'
 
+Bundle 'gerw/vim-HiLinkTrace'
+
+" Bundle 'klen/python-mode.git'
+" let pymode_lint_checker='pyflakes'
+" let pymode_lint=0
+" let pymode_folding=0
 
 " TIPS
 
