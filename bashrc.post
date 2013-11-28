@@ -64,14 +64,3 @@ export CLICOLOR=1
 export LSCOLORS=Gxfxcxdxbxegedabagacad
 export EDITOR=vim
 
-alias r='cd ../rasp 2>/dev/null || cd ~/work/rasp/rasp'
-alias t='cd ../ticket 2>/dev/null || cd ~/work/rasp/ticket'
-alias f='../tools/fcgi.sh restart'
-alias fd='../tools/tickets.sh restart'
-
-alias sl="sed 's/&quot;/\"/g' | sed -r 's/></>\n</g' | less"
-
-export PATH=~/bin:~/helpers:~/:$PATH
-
-source ~/helpers/gitaliases
-
