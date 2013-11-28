@@ -29,7 +29,7 @@ set cursorline
 set nowrap
 set linebreak
 
-set autowriteall
+" set autowriteall
 set autoread
 set wildmenu
 set wildmode=list:full
@@ -94,7 +94,12 @@ color iv-color
 
 " russian
 " all keys but leader \ (ё)
-set langmap=ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЁ[ЯЧСМИТЬБЮ?;QWERTYUIOP{}ASDFGHJKL:\"\|~ZXCVBNM<>?,йцукенгшщзхъфывапролджэ]ячсмитьбю/;qwertyuiop[]asdfghjkl\;'`zxcvbnm\\\,./
+" set langmap=ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЁ[ЯЧСМИТЬБЮ?;QWERTYUIOP{}ASDFGHJKL:\"\|~ZXCVBNM<>?,йцукенгшщзхъфывапролджэ]ячсмитьбю/;qwertyuiop[]asdfghjkl\;'`zxcvbnm\\\,./
+nnoremap <silent><C-l> :<C-u>nohlsearch<cr><C-l>
+
+" sort
+nnoremap <Leader>s :sort i<cr>
+vnoremap <Leader>s :sort i<cr>
 
 " fast :w
 nnoremap <Leader>w :w<cr>
@@ -130,7 +135,18 @@ nnoremap <leader>T :!ctags -R .<cr>
 " Python
 
 " strip trailing space in python files
-" autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
+autocmd BufWritePre *.py normal m`:%s/\v\s+$//e<cr>``
+
+" function TrimTrailingSpaceAndAddLastLine()
+"     let save_cursor = getpos(".")
+"     :silent! %s#\v\s+$##e
+"     :silent! %s#\($\n\s*\)\+\%$##
+"     normal G
+"     put _
+"     call setpos('.', save_cursor)
+" endfunction
+
+" autocmd BufWritePre *.py call TrimTrailingSpaceAndAddLastLine()
 
 " to python class begin
 nnoremap [c ?^class <cr>
@@ -148,10 +164,10 @@ filetype plugin indent on " обязательно!
 
 " Bundle 'ervandew/supertab'
 Bundle 'ervandew/screen'
-nnoremap <Leader>s :ScreenSend<cr>
-vnoremap <Leader>s :ScreenSend<cr>
-nnoremap <Leader>ss :ScreenShell<cr>
-nnoremap <Leader>sq :ScreenQuit<cr>
+" nnoremap <Leader>s :ScreenSend<cr>
+" vnoremap <Leader>s :ScreenSend<cr>
+" nnoremap <Leader>ss :ScreenShell<cr>
+" nnoremap <Leader>sq :ScreenQuit<cr>
 
 " Bundle 'edsono/vim-matchit'
 filetype plugin on
