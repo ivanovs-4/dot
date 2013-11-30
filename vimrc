@@ -18,6 +18,7 @@ set ruler
 set scrolloff=7
 set sidescrolloff=9
 set display+=lastline
+set clipboard+=unnamed
 
 set hlsearch
 set incsearch
@@ -29,10 +30,12 @@ set cursorline
 set nowrap
 set linebreak
 
-" set autowriteall
+set autowriteall
+" set autowrite
+
 set autoread
 set wildmenu
-set wildmode=list:full
+set wildmode=list:longest
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.log
 
 "" Show full tags when doing search completion
@@ -61,9 +64,10 @@ set fileformats=unix
 
 set tabpagemax=9
 
-set history=1024
+set history=10240
+
 " viminfo options.txt 7577
-set viminfo='40,f1,<44,:48,@55,/59,%77
+set viminfo='4000,f100,<4400,:4800,@5500,/5900,%7700
 
 " ex_mode/history-scrollers.vim
 cnoremap <C-p> <Up>
@@ -74,11 +78,12 @@ inoremap <C-U> <C-G>u<C-U>
 " Y baheave as C and D
 nnoremap Y y$
 
+nnoremap <F5> :make<cr>
 " moving through windows
-map <C-J> <C-W>j
-map <C-K> <C-W>k
-map <C-L> <C-w>l
-map <C-H> <C-W>h
+" map <C-J> <C-W>j
+" map <C-K> <C-W>k
+" map <C-L> <C-w>l
+" map <C-H> <C-W>h
 
 set t_Co=256
 syntax on
@@ -93,8 +98,12 @@ color iv-color
 " vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " russian
-" all keys but leader \ (ё)
-" set langmap=ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЁ[ЯЧСМИТЬБЮ?;QWERTYUIOP{}ASDFGHJKL:\"\|~ZXCVBNM<>?,йцукенгшщзхъфывапролджэ]ячсмитьбю/;qwertyuiop[]asdfghjkl\;'`zxcvbnm\\\,./
+set keymap=russian-jcukenmac
+set iminsert=0 
+set imsearch=0 
+highlight lCursor guifg=NONE guibg=Cyan
+
+" hide search matches
 nnoremap <silent><C-l> :<C-u>nohlsearch<cr><C-l>
 
 " sort
@@ -165,7 +174,7 @@ filetype plugin indent on " обязательно!
 " Bundle 'ervandew/supertab'
 Bundle 'ervandew/screen'
 " nnoremap <Leader>s :ScreenSend<cr>
-" vnoremap <Leader>s :ScreenSend<cr>
+nnoremap <F7> :ScreenSend<cr>
 " nnoremap <Leader>ss :ScreenShell<cr>
 " nnoremap <Leader>sq :ScreenQuit<cr>
 
@@ -189,7 +198,7 @@ Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-surround'
 Bundle 'pythonhelper'
 
-Bundle 'gerw/vim-HiLinkTrace'
+" Bundle 'gerw/vim-HiLinkTrace'
 
 " Bundle 'klen/python-mode.git'
 " let pymode_lint_checker='pyflakes'
