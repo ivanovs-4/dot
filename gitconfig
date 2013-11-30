@@ -15,4 +15,5 @@
 [grep]
 	lineNumber = true
 [diff]
-	algorithm = --histogram
+	algorithm = histogram
+
