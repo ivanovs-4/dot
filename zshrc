@@ -24,7 +24,7 @@ ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[yellow]%} ═"
 local fail_code='%(?, ,%{$fg[red]%}FAIL: $?%{$reset_color%}
 )'
 
-local user='%{$fg[grey]%}%n%{$reset_color%}'
+local user='%{$fg[blue]%}%n%{$reset_color%}'
 local monkey='%{$fg[red]%}@%{$reset_color%}'
 local host='%{$fg[green]%}%m%{$reset_color%}'
 local colo='%{$fg[grey]%}:%{$reset_color%}'
