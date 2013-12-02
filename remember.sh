@@ -10,5 +10,5 @@ cp ~/.vimrc ~/dot/vimrc
 cp ~/.Xmodmap ~/dot/Xmodmap
 cp ~/.zshrc ~/dot/zshrc
 
-git status
+cd ~/dot && git status
 
