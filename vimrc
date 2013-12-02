@@ -23,11 +23,13 @@ set clipboard+=unnamed
 set hlsearch
 set incsearch
 set ignorecase
+set infercase
 set smartcase
 set laststatus=2
 " set statusline=%<%f\ [%Y%R%W]%1*%{(&modified)?'\ [+]\ ':''}%*%=%c%V,%l\ %P\ [%n]
 set cursorline
-set nowrap
+set wrap
+set textwidth=81
 set linebreak
 
 set autowriteall
@@ -74,6 +76,15 @@ cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
 inoremap <C-U> <C-G>u<C-U>
+
+" The & command is a synonym for :s, which repeats the last substitution. Unfortunately,
+" if any flags were used, the & command disregards them, meaning that the outcome
+"     could be quite different from the previous substitution.
+"     Making & trigger the :&& command is more useful. It preserves flags and therefore
+"     produces more consistent results. These mappings fix the & command in Normal
+"     mode and create a Visual mode equivalent:
+nnoremap & :&&<CR>
+xnoremap & :&&<CR>
 
 " Y baheave as C and D
 nnoremap Y y$
@@ -144,18 +155,18 @@ nnoremap <leader>T :!ctags -R .<cr>
 " Python
 
 " strip trailing space in python files
-autocmd BufWritePre *.py normal m`:%s/\v\s+$//e<cr>``
+" autocmd BufWritePre *.py normal m`:%s/\v\s+$//e<cr>``
 
-" function TrimTrailingSpaceAndAddLastLine()
-"     let save_cursor = getpos(".")
-"     :silent! %s#\v\s+$##e
-"     :silent! %s#\($\n\s*\)\+\%$##
-"     normal G
-"     put _
-"     call setpos('.', save_cursor)
-" endfunction
+function TrimTrailingSpaceAndAddLastLine()
+    let save_cursor = getpos(".")
+    :silent! %s#\v\s+$##e
+    :silent! %s#\($\n\s*\)\+\%$##
+    normal G
+    put _
+    call setpos('.', save_cursor)
+endfunction
 
-" autocmd BufWritePre *.py call TrimTrailingSpaceAndAddLastLine()
+autocmd BufWritePre *.{py,txt} call TrimTrailingSpaceAndAddLastLine()
 
 " to python class begin
 nnoremap [c ?^class <cr>
@@ -196,6 +207,8 @@ Bundle 'tpope/vim-unimpaired.git'
 Bundle 'tpope/vim-obsession'
 Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-abolish'
+
 Bundle 'pythonhelper'
 
 " Bundle 'gerw/vim-HiLinkTrace'
