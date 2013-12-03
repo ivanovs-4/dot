@@ -1,5 +1,6 @@
-set nocompatible
+source ~/.vim/bundles.vim
 
+set nocompatible
 set encoding=utf-8
 
 set autoindent
@@ -26,18 +27,23 @@ set incsearch
 set ignorecase
 set smartcase
 set laststatus=2
-" set statusline=%<%f\ [%Y%R%W]%1*%{(&modified)?'\ [+]\ ':''}%*%=%c%V,%l\ %P\ [%n]
 set cursorline
 set wrap
 set linebreak
-
 set autowriteall
-" set autowrite
-
 set autoread
 set wildmenu
 set wildmode=list:full
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.log
+
+set t_Co=256
+syntax on
+color iv-color
+" russian
+set keymap=russian-jcukenmac
+set iminsert=0 
+set imsearch=0 
+highlight lCursor guifg=NONE guibg=Cyan
 
 "" Show full tags when doing search completion
 "set showfulltag
@@ -98,24 +104,6 @@ nnoremap <F5> :make<cr>
 " map <C-L> <C-w>l
 " map <C-H> <C-W>h
 
-set t_Co=256
-syntax on
-color iv-color
-
-" " C-Up C-Down переместить строку
-" nnoremap <C-j> :m .+1<CR>==
-" nnoremap <C-k> :m .-2<CR>==
-" inoremap <C-j> <Esc>:m .+1<CR>==gi
-" inoremap <C-k> <Esc>:m .-2<CR>==gi
-" vnoremap <C-j> :m '>+1<CR>gv=gv
-" vnoremap <C-k> :m '<-2<CR>gv=gv
-
-" russian
-set keymap=russian-jcukenmac
-set iminsert=0 
-set imsearch=0 
-highlight lCursor guifg=NONE guibg=Cyan
-
 " hide search matches
 nnoremap <silent><C-l> :<C-u>nohlsearch<cr><C-l>
 
@@ -154,7 +142,23 @@ nnoremap <leader>T :!ctags -R .<cr>
 " nmap xxxxx :%s/\<<c-r>=expand("<cword>")<cr>\>/
 
 
+" Strip trailing whitespace {{{2
+function! Preserve(command)
+" Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+" Do the business:
+  execute a:command
+" Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
 " Python
+
+" to python class begin
+nnoremap [c ?^class <cr>
 
 " strip trailing space in python files
 " autocmd BufWritePre *.py normal m`:%s/\v\s+$//e<cr>``
@@ -169,58 +173,9 @@ function! TrimTrailingSpace()
 endfunction
 
 autocmd BufWritePre *.py call TrimTrailingSpace()
+autocmd BufWritePre *.vim call TrimTrailingSpace()
+autocmd BufWritePre *.txt call TrimTrailingSpace()
 
-" to python class begin
-nnoremap [c ?^class <cr>
-
-
-" vundle
-" !git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-set nocompatible
-filetype off " обязательно!
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-filetype plugin indent on " обязательно!
-
-" Bundle 'kana/vim-textobj-entire'
-
-" Bundle 'ervandew/supertab'
-Bundle 'ervandew/screen'
-" nnoremap <Leader>s :ScreenSend<cr>
-nnoremap <F7> :ScreenSend<cr>
-" nnoremap <Leader>ss :ScreenShell<cr>
-" nnoremap <Leader>sq :ScreenQuit<cr>
-
-" Bundle 'edsono/vim-matchit'
-filetype plugin on
-runtime macros/matchit.vim
-
-" Bundle 'vim-scripts/L9'
-" Bundle 'vim-scripts/FuzzyFinder'
-
-" Bundle 'kevinw/pyflakes-vim'
-Bundle 'vim-scripts/indentpython.vim'
-
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-commentary.git'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-unimpaired.git'
-Bundle 'tpope/vim-obsession'
-Bundle 'tpope/vim-speeddating'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-abolish'
-
-Bundle 'pythonhelper'
-
-Bundle 'vim-scripts/Git-Branch-Info'
-
-" Bundle 'gerw/vim-HiLinkTrace'
-
-" Bundle 'klen/python-mode.git'
-" let pymode_lint_checker='pyflakes'
-" let pymode_lint=0
-" let pymode_folding=0
 
 " TIPS
 
