@@ -10,4 +10,5 @@ ln -s ~/dot/vim ~/.vim
 ln -s ~/.vim/vimrc ~/.vimrc
 ln -s ~/dot/Xmodmap ~/.Xmodmap
 ln -s ~/dot/zshrc ~/.zshrc
+ln -s ~/dot/git_template ~/.git_template
 
