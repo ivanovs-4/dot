@@ -137,7 +137,7 @@ nnoremap <Leader>r :!~/work/rasp/tools/fcgi.sh restart<cr>
 nnoremap <Leader>d :!clear; git diff -U2 HEAD<cr>
 
 " rebuild tags
-nnoremap <leader>T :!ctags -R .<cr>
+nnoremap <Leader>T :!ctags -R .<cr>
 "
 " nmap xxxxx :%s/\<<c-r>=expand("<cword>")<cr>\>/
 
@@ -172,10 +172,11 @@ function! TrimTrailingSpace()
     call setpos('.', save_cursor)
 endfunction
 
+" nnoremap <Leader>- call TrimTrailingSpace()
+
 autocmd BufWritePre *.py call TrimTrailingSpace()
 autocmd BufWritePre *.vim call TrimTrailingSpace()
 autocmd BufWritePre *.txt call TrimTrailingSpace()
-
 
 " TIPS
 
