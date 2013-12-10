@@ -1,6 +1,8 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
+setopt noCORRECT
+
 DISABLE_AUTO_UPDATE="true"
 plugins=(git)
 
@@ -60,6 +62,7 @@ fi
 
 export LC_ALL="en_US.UTF-8"
 export LANG="ru"
+export TERM="xterm-256color"
 
 export CLICOLOR=1
 export LSCOLORS=Gxfxcxdxbxegedabagacad

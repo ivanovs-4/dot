@@ -172,11 +172,7 @@ function! TrimTrailingSpace()
     call setpos('.', save_cursor)
 endfunction
 
-" nnoremap <Leader>- call TrimTrailingSpace()
-
-autocmd BufWritePre *.py call TrimTrailingSpace()
-autocmd BufWritePre *.vim call TrimTrailingSpace()
-autocmd BufWritePre *.txt call TrimTrailingSpace()
+nnoremap <F8> :call TrimTrailingSpace()<cr>:w<cr>
 
 " TIPS
 

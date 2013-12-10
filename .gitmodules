@@ -64,3 +64,6 @@
 [submodule "vim/bundle/nose.vim"]
 	path = vim/bundle/nose.vim
 	url = https://github.com/lambdalisue/nose.vim.git
+[submodule "vim/bundle/vim-operator-user"]
+	path = vim/bundle/vim-operator-user
+	url = https://github.com/kana/vim-operator-user.git

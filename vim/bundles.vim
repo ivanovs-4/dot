@@ -59,3 +59,5 @@ Bundle 'bps/vim-textobj-python.git'
 " Bundle 'kana/vim-textobj-between.git'
 " Bundle 'saihoooooooo/vim-textobj-space.git'
 
+Bundle 'kana/vim-operator-user'
+
