@@ -1,6 +1,9 @@
-source ~/.vim/bundles.vim
-
 set nocompatible
+execute pathogen#infect()
+syntax on
+filetype plugin on
+filetype plugin indent on
+
 set encoding=utf-8
 
 set autoindent
@@ -9,7 +12,7 @@ set backspace=indent,eol,start
 set complete-=i
 set showmatch
 set smarttab
-set showcmd 
+set showcmd
 set number
 set tabstop=4
 set softtabstop=4
@@ -41,9 +44,11 @@ syntax on
 color iv-color
 " russian
 set keymap=russian-jcukenmac
-set iminsert=0 
-set imsearch=0 
+set iminsert=0
+set imsearch=0
 highlight lCursor guifg=NONE guibg=Cyan
+
+runtime macros/matchit.vim
 
 "" Show full tags when doing search completion
 "set showfulltag
@@ -77,6 +82,11 @@ set history=10240
 " viminfo options.txt 7577
 set viminfo='4000,f100,<4400,:4800,@5500,/5900,%7700
 
+nnoremap <F5> :make<cr>
+
+nnoremap <F7> :ScreenSend<cr>
+nnoremap <Leader><F7> :ScreenShell<cr>
+
 " ex_mode/history-scrollers.vim
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
@@ -97,25 +107,12 @@ xnoremap . :normal .<CR>
 " Y baheave as C and D
 nnoremap Y y$
 
-nnoremap <F5> :make<cr>
-" moving through windows
-" map <C-J> <C-W>j
-" map <C-K> <C-W>k
-" map <C-L> <C-w>l
-" map <C-H> <C-W>h
-
 " hide search matches
 nnoremap <silent><C-l> :<C-u>nohlsearch<cr><C-l>
 
 " sort
 nnoremap <Leader>s :sort i<cr>
 vnoremap <Leader>s :sort i<cr>
-
-" fast :w
-nnoremap <Leader>w :w<cr>
-
-" sudo save
-nnoremap <Leader><C-w>:w !sudo tee % > /dev/null<cr>
 
 " compose jira text to commit comment
 nnoremap <Leader>j gg0dwJJ<ESC>
@@ -130,16 +127,11 @@ nnoremap <Leader>V :n ~/.vim/vimrc<cr>
 nnoremap <Leader>v :update<cr>:so $MYVIMRC<cr>
 " autocmd BufWritePost ~/.vimrc   so ~/.vimrc
 
-" restart current service
-nnoremap <Leader>r :!~/work/rasp/tools/fcgi.sh restart<cr>
-
 " git diff
 nnoremap <Leader>d :!clear; git diff -U2 HEAD<cr>
 
 " rebuild tags
 nnoremap <Leader>T :!ctags -R .<cr>
-"
-" nmap xxxxx :%s/\<<c-r>=expand("<cword>")<cr>\>/
 
 
 " Strip trailing whitespace {{{2
@@ -173,6 +165,13 @@ function! TrimTrailingSpace()
 endfunction
 
 nnoremap <F8> :call TrimTrailingSpace()<cr>:w<cr>
+
+" fast :w
+nnoremap <Leader>w :w<cr>
+
+" sudo save
+nnoremap <Leader><C-w> :w !sudo tee % > /dev/null<cr>
+
 
 " TIPS
 
