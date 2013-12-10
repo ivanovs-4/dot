@@ -121,7 +121,7 @@ nnoremap <Leader><C-w>:w !sudo tee % > /dev/null<cr>
 nnoremap <Leader>j gg0dwJJ<ESC>
 
 " edit ~/.vim/colors/iv-color.vim
-nnoremap <Leader>C :n ~/.vim/colors/iv-color.vim<cr>
+nnoremap <Leader>c :n ~/.vim/colors/iv-color.vim<cr>
 
 " edit reload .vimrc
 nnoremap <Leader>V :n ~/.vim/vimrc<cr>

@@ -19,7 +19,8 @@ nnoremap <Leader><F7> :ScreenShell<cr>
 filetype plugin on
 runtime macros/matchit.vim
 
-Bundle 'vim-scripts/indentpython.vim'
+" Bundle 'vim-scripts/indentpython.vim'
+Bundle 'hynek/vim-python-pep8-indent'
 
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-commentary.git'
@@ -32,6 +33,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-abolish'
 
 Bundle 'pythonhelper'
+Bundle 'lambdalisue/nose.vim'
 
 " Bundle 'vim-scripts/Git-Branch-Info'
 " Bundle 'gerw/vim-HiLinkTrace'

@@ -28,9 +28,9 @@ if version > 580
         syntax reset
     endif
 endif
-let g:colors_name="desert256"
+let g:colors_name="iv-color"
 
-            
+
 if has("gui_running") || &t_Co == 88 || &t_Co == 256
     " functions {{{
     " returns an approximate grey index for the given grey level
