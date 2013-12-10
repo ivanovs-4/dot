@@ -23,3 +23,6 @@ ln -sf ~/dot/i3 ~/.i3
 rm -f ~/.git_template
 ln -sf ~/dot/git_template ~/.git_template
 
+git submodule init
+git submodule update
+
