@@ -17,3 +17,5 @@
 [diff]
 	algorithm = histogram
 
+[init]
+	templatedir = ~/.git_template
