@@ -31,7 +31,7 @@ set ignorecase
 set smartcase
 set laststatus=2
 set cursorline
-set wrap
+set nowrap
 set linebreak
 set autowriteall
 set autoread
@@ -73,7 +73,7 @@ set shiftround
 " set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set shell=/bin/bash
 
-set fileformats=unix
+set fileformats+=unix
 
 set tabpagemax=9
 
@@ -81,6 +81,9 @@ set history=10240
 
 " viminfo options.txt 7577
 set viminfo='4000,f100,<4400,:4800,@5500,/5900,%7700
+
+" rearrange arguments each to one line
+nnoremap <F4>  %mm%lc`m<cr><cr><c-o>k<c-r>"<esc>kmmjjmnk:s/\v\,\zs\s/\r/g<cr>`nv`m=
 
 nnoremap <F5> :make<cr>
 
@@ -129,10 +132,6 @@ nnoremap <Leader>v :update<cr>:so $MYVIMRC<cr>
 
 " git diff
 nnoremap <Leader>d :!clear; git diff -U2 HEAD<cr>
-
-" rebuild tags
-nnoremap <Leader>T :!ctags -R .<cr>
-
 
 " Strip trailing whitespace {{{2
 function! Preserve(command)
