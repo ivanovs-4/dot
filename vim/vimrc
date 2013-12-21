@@ -82,6 +82,12 @@ set history=10240
 " viminfo options.txt 7577
 set viminfo='4000,f100,<4400,:4800,@5500,/5900,%7700
 
+nnoremap [R Bi<cr><esc>
+nnoremap ]R Wi<cr><esc>
+
+nnoremap [r i<cr><esc>ge
+nnoremap ]r a<cr><esc>ge
+
 " rearrange arguments each to one line
 nnoremap <F4>  %mm%lc`m<cr><cr><c-o>k<c-r>"<esc>kmmjjmnk:s/\v\,\zs\s/\r/g<cr>`nv`m=
 
