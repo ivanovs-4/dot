@@ -130,9 +130,6 @@
 [submodule "vim/bundle/vim-rsi"]
 	path = vim/bundle/vim-rsi
 	url = git://github.com/tpope/vim-rsi.git
-[submodule "vim/bundle/visualrepeat"]
-	path = vim/bundle/visualrepeat
-	url = https://github.com/vim-scripts/visualrepeat.git
 [submodule "vim/bundle/NrrwRgn"]
 	path = vim/bundle/NrrwRgn
 	url = https://github.com/chrisbra/NrrwRgn.git
