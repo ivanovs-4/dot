@@ -100,3 +100,39 @@
 [submodule "vim/bundle/vim-textobj-signify-hunk"]
 	path = vim/bundle/vim-textobj-signify-hunk
 	url = https://github.com/killphi/vim-textobj-signify-hunk.git
+[submodule "vim/bundle/utl"]
+	path = vim/bundle/utl
+	url = https://github.com/vim-scripts/utl.vim.git
+[submodule "vim/bundle/vim-vinegar"]
+	path = vim/bundle/vim-vinegar
+	url = https://github.com/tpope/vim-vinegar.git
+[submodule "vim/bundle/vim-eunuch"]
+	path = vim/bundle/vim-eunuch
+	url = https://github.com/tpope/vim-eunuch.git
+[submodule "vim/bundle/TagHighlight"]
+	path = vim/bundle/TagHighlight
+	url = https://github.com/vim-scripts/TagHighlight.git
+[submodule "vim/bundle/calendar-vim"]
+	path = vim/bundle/calendar-vim
+	url = git://github.com/mattn/calendar-vim
+[submodule "vim/bundle/narrow-region"]
+	path = vim/bundle/narrow-region
+	url = https://github.com/chrisbra/NrrwRgn.git
+[submodule "vim/bundle/tagbar"]
+	path = vim/bundle/tagbar
+	url = https://github.com/majutsushi/tagbar.git
+[submodule "vim/bundle/vim-easy-align"]
+	path = vim/bundle/vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align.git
+[submodule "vim/bundle/vim-orgmode"]
+	path = vim/bundle/vim-orgmode
+	url = https://github.com/jceb/vim-orgmode.git
+[submodule "vim/bundle/vim-rsi"]
+	path = vim/bundle/vim-rsi
+	url = git://github.com/tpope/vim-rsi.git
+[submodule "vim/bundle/visualrepeat"]
+	path = vim/bundle/visualrepeat
+	url = https://github.com/vim-scripts/visualrepeat.git
+[submodule "vim/bundle/NrrwRgn"]
+	path = vim/bundle/NrrwRgn
+	url = https://github.com/chrisbra/NrrwRgn.git
