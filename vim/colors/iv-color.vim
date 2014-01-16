@@ -258,10 +258,10 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("Search", "f5deb3", "cd853f", "")
     call <SID>X("IncSearch", "f5deb3", "cd853f", "")
     call <SID>X("LineNr", "0055aa", "", "")
-    call <SID>X("CursorLine", "", "", "none")
+    call <SID>X("CursorLine", "", "000000", "bold")
     call <SID>X("ModeMsg", "daa520", "", "")
     call <SID>X("MoreMsg", "2e8b57", "", "")
-    call <SID>X("NonText", "addbe7", "000000", "bold")
+    call <SID>X("NonText", "000000", "000000", "bold")
     call <SID>X("Question", "007fff", "", "")
     call <SID>X("Specialkey", "7acd92", "", "")
     call <SID>X("Statusline", "cc5544", "222222", "bold")
@@ -286,7 +286,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     "Underlined
     call <SID>X("Ignore", "666666", "", "")
     "Error
-    call <SID>X("Todo", "ff4500", "eeee00", "")
+    call <SID>X("Todo", "008800", "000000", "")
 
     " delete functions {{{
     delf <SID>X

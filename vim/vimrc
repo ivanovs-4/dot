@@ -30,7 +30,7 @@ set incsearch
 set ignorecase
 set smartcase
 set laststatus=2
-set cursorline
+set nocursorline
 set nowrap
 set linebreak
 set autowriteall
@@ -152,6 +152,26 @@ function! Preserve(command)
   call cursor(l, c)
 endfunction
 
+" orgmode use
+let g:org_agenda_files = ['~/org/*.org']
+
+" let g:org_todo_keywords = [['TODO(t)', 'FOCUS(f)', '|', 'DONE(d)']]
+
+nmap <F6> :TagbarToggle<cr>
+
+function! GitAutocommitCurrentFile()
+    :w!
+    :lcd %:h
+    :silent! !git reset
+    :silent! !git add -f %
+    :silent! !git commit -m '% autocommit'
+    :lcd!
+    :e!
+    :redraw!
+endfunction
+
+nnoremap <C-x>gc :call GitAutocommitCurrentFile()<cr>
+
 " Python
 
 " to python class begin
@@ -178,7 +198,7 @@ nnoremap <Leader><C-w> :w !sudo tee % > /dev/null<cr>
 " TIPS
 
 " mapping for tpope/vim-fugitive
-nnoremap <Leader>g :Gstatus<cr>
+nnoremap <Leader>G :Gstatus<cr>
 
 " go to defn of tag under the cursor
 fun! MatchCaseTag()
