@@ -163,9 +163,6 @@ nnoremap [c ?^class <cr>
 function! TrimTrailingSpace()
     let save_cursor = getpos(".")
     :silent! %s#\v\s+$##e
-    :silent! %s#\($\n\s*\)\+\%$##
-    normal G
-    put _
     call setpos('.', save_cursor)
 endfunction
 
