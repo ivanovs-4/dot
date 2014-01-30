@@ -9,6 +9,8 @@ alias pp='python -mjson.tool'
 
 alias sl="sed 's/&quot;/\"/g' | sed -r 's/></>\n</g' | less"
 
+alias tmux="tmux -2"
+
 if [ -f ~/.bash_aliases_git ]; then
     . ~/.bash_aliases_git
 fi

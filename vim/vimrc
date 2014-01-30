@@ -24,7 +24,6 @@ set sidescrolloff=9
 set display+=lastline
 set clipboard+=unnamed
 set nojoinspaces
-
 set hlsearch
 set incsearch
 set ignorecase
@@ -88,13 +87,14 @@ nnoremap ]R Wi<cr><esc>
 nnoremap [r i<cr><esc>ge
 nnoremap ]r a<cr><esc>ge
 
+nnoremap <C-w>t :tabnew<cr>
+nnoremap <C-w><c-t> mM:tabnew<cr>`M
+nnoremap <Leader>q :copen<cr>
+nnoremap <Leader>Q :cclose<cr>
+nnoremap <leader><C-g> :Ggrep <C-r><C-w>
+
 " rearrange arguments each to one line
-nnoremap <F4>  %mm%lc`m<cr><cr><c-o>k<c-r>"<esc>kmmjjmnk:s/\v\,\zs\s/\r/g<cr>`nv`m=
-
-nnoremap <F5> :make<cr>
-
-nnoremap <F7> :ScreenSend<cr>
-nnoremap <Leader><F7> :ScreenShell<cr>
+nnoremap <leader>4  %mm%lc`m<cr><cr><c-o>k<c-r>"<esc>kmmjjmnk:s/\v\,\zs\s/\r/g<cr>`nv`m=
 
 " ex_mode/history-scrollers.vim
 cnoremap <C-p> <Up>
@@ -157,7 +157,7 @@ let g:org_agenda_files = ['~/org/*.org']
 
 " let g:org_todo_keywords = [['TODO(t)', 'FOCUS(f)', '|', 'DONE(d)']]
 
-nmap <F6> :TagbarToggle<cr>
+" nmap <leader>6 :TagbarToggle<cr>
 
 function! GitAutocommitCurrentFile()
     :w!
@@ -186,7 +186,7 @@ function! TrimTrailingSpace()
     call setpos('.', save_cursor)
 endfunction
 
-nnoremap <F8> :call TrimTrailingSpace()<cr>:w<cr>
+nnoremap <leader>8 :call TrimTrailingSpace()<cr>:w<cr>
 
 " fast :w
 nnoremap <Leader>w :w<cr>

@@ -52,18 +52,12 @@
 [submodule "vim/bundle/vim-unimpaired"]
 	path = vim/bundle/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
-[submodule "vim/bundle/vundle"]
-	path = vim/bundle/vundle
-	url = https://github.com/gmarik/vundle.git
 [submodule "vim/bundle/vim-python-pep8-indent"]
 	path = vim/bundle/vim-python-pep8-indent
 	url = https://github.com/hynek/vim-python-pep8-indent.git
 [submodule "vim/bundle/vim-textobj-lastpat"]
 	path = vim/bundle/vim-textobj-lastpat
 	url = https://github.com/kana/vim-textobj-lastpat.git
-[submodule "vim/bundle/nose.vim"]
-	path = vim/bundle/nose.vim
-	url = https://github.com/lambdalisue/nose.vim.git
 [submodule "vim/bundle/vim-operator-user"]
 	path = vim/bundle/vim-operator-user
 	url = https://github.com/kana/vim-operator-user.git
@@ -73,9 +67,6 @@
 [submodule "vim/bundle/vim-python-scripting"]
 	path = vim/bundle/vim-python-scripting
 	url = git@github.yandex-team.ru:seiv/vim-python-scripting.git
-[submodule "vim/bundle/vim-textobj-diff"]
-	path = vim/bundle/vim-textobj-diff
-	url = https://github.com/kana/vim-textobj-diff.git
 [submodule "vim/bundle/vim-textobj-fold"]
 	path = vim/bundle/vim-textobj-fold
 	url = https://github.com/kana/vim-textobj-fold.git
@@ -109,27 +100,12 @@
 [submodule "vim/bundle/vim-eunuch"]
 	path = vim/bundle/vim-eunuch
 	url = https://github.com/tpope/vim-eunuch.git
-[submodule "vim/bundle/TagHighlight"]
-	path = vim/bundle/TagHighlight
-	url = https://github.com/vim-scripts/TagHighlight.git
 [submodule "vim/bundle/calendar-vim"]
 	path = vim/bundle/calendar-vim
 	url = git://github.com/mattn/calendar-vim
 [submodule "vim/bundle/narrow-region"]
 	path = vim/bundle/narrow-region
 	url = https://github.com/chrisbra/NrrwRgn.git
-[submodule "vim/bundle/tagbar"]
-	path = vim/bundle/tagbar
-	url = https://github.com/majutsushi/tagbar.git
-[submodule "vim/bundle/vim-easy-align"]
-	path = vim/bundle/vim-easy-align
-	url = https://github.com/junegunn/vim-easy-align.git
 [submodule "vim/bundle/vim-orgmode"]
 	path = vim/bundle/vim-orgmode
 	url = https://github.com/jceb/vim-orgmode.git
-[submodule "vim/bundle/vim-rsi"]
-	path = vim/bundle/vim-rsi
-	url = git://github.com/tpope/vim-rsi.git
-[submodule "vim/bundle/NrrwRgn"]
-	path = vim/bundle/NrrwRgn
-	url = https://github.com/chrisbra/NrrwRgn.git
