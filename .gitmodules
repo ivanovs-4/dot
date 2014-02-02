@@ -109,3 +109,9 @@
 [submodule "vim/bundle/vim-orgmode"]
 	path = vim/bundle/vim-orgmode
 	url = https://github.com/jceb/vim-orgmode.git
+[submodule "vim/bundle/vim-pythogen"]
+	path = vim/bundle/vim-pythogen
+	url = git@github.com:ivanovwaltz/vim-pythogen.git
+[submodule "vim/bundle/vim-diary-p2"]
+	path = vim/bundle/vim-diary-p2
+	url = git@github.com:ivanovwaltz/vim-diary-p2.git
