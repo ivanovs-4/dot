@@ -154,6 +154,7 @@ endfunction
 
 " orgmode use
 let g:org_agenda_files = ['~/org/*.org']
+let g:org_heading_shade_leading_stars = 0
 
 " let g:org_todo_keywords = [['TODO(t)', 'FOCUS(f)', '|', 'DONE(d)']]
 
@@ -170,7 +171,7 @@ function! GitAutocommitCurrentFile()
     :redraw!
 endfunction
 
-nnoremap <C-x>gc :call GitAutocommitCurrentFile()<cr>
+nnoremap <leader>gc :call GitAutocommitCurrentFile()<cr>
 
 " Python
 
