@@ -89,8 +89,22 @@ nnoremap ]r a<cr><esc>ge
 
 nnoremap <C-w>t :tabnew<cr>
 nnoremap <C-w><c-t> mM:tabnew<cr>`M
-nnoremap <Leader>q :copen<cr>
-nnoremap <Leader>Q :cclose<cr>
+
+" qickfix toggle
+nnoremap <leader>q :call QuickfixToggle()<cr>
+let g:quickfix_is_open = 0
+function! QuickfixToggle()
+    if g:quickfix_is_open
+        cclose
+        let g:quickfix_is_open = 0
+        execute g:quickfix_return_to_window . "wincmd w"
+    else
+        let g:quickfix_return_to_window = winnr()
+        copen
+        let g:quickfix_is_open = 1
+    endif
+endfunction
+
 nnoremap <leader><C-g> :Ggrep <C-r><C-w>
 
 " rearrange arguments each to one line
