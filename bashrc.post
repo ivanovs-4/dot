@@ -12,7 +12,7 @@ if [ -f "${HOME}/.gnupg/.gpg-agent-info" ]; then
   export GPG_AGENT_INFO
 fi
 
-export PS1='\n\[\e[0;34m\]\u\[\e[0;35m\]@\[\e[0;34m\]\h\[\e[0;32m\] \[\e[0;32m\]\w\[\e[0;32m\]\[\e[0;33m\]$(git_branch_name)\[\e[0;32m\]\n\[\e[0;31m\]\$\[\e[00m\]'
+export PS1='\n\[\e[0;34m\]\u\[\e[0;35m\]@\[\e[0;34m\]\H\[\e[0;32m\] \[\e[0;32m\]\w\[\e[0;32m\]\[\e[0;33m\]$(git_branch_name)\[\e[0;32m\]\n\[\e[0;31m\]\$\[\e[00m\]'
 git_branch_name() {
     branch=$(git branch 2>/dev/null | grep '^\* ' | cut -c3-)
     if [ "$branch" ]; then
@@ -63,4 +63,6 @@ export LANG="ru"
 export CLICOLOR=1
 export LSCOLORS=Gxfxcxdxbxegedabagacad
 export EDITOR=vim
+
+stty stop ''
 

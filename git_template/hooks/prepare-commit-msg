@@ -1,0 +1,15 @@
+#!/bin/sh
+ORIG_MSG_FILE="$1"
+TEMP=`mktemp /tmp/git-XXXXX`
+
+BRANCH=`git branch | grep '^\*' | cut -b3-`
+# echo "BRANCH $BRANCH"
+
+TASK_KEY=$(~/bin/recognize_task_key $BRANCH)
+# echo "TASK_KEY $TASK_KEY"
+
+COMMIT_MSG=$(~/bin/task_title $TASK_KEY)
+# echo "COMMIT_MSG $COMMIT_MSG"
+
+(echo $TASK_KEY $COMMIT_MSG; cat "$ORIG_MSG_FILE") > "$TEMP"
+cat "$TEMP" > "$ORIG_MSG_FILE"

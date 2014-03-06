@@ -5,7 +5,7 @@
 	editor = vim
 	excludesfile = ~/.gitignore_global
 [color]
-	interactive = auto
+	interactive = true
 	diff = auto
 	status = auto
 	branch = auto
