@@ -18,6 +18,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
+set lazyredraw
 set ruler
 set scrolloff=7
 set sidescrolloff=9
@@ -42,7 +43,7 @@ set t_Co=256
 syntax on
 color iv-color
 " russian
-set keymap=russian-jcukenmac
+set keymap=russian-jcukenmac-punctuate
 set iminsert=0
 set imsearch=0
 highlight lCursor guifg=NONE guibg=Cyan
@@ -92,8 +93,27 @@ nnoremap ]R Wi<cr><esc>
 nnoremap [r i<cr><esc>ge
 nnoremap ]r a<cr><esc>ge
 
+nnoremap <leader>t :!.git/hooks/ctags<cr>
+
+nmap <leader>b dsbdb
+
 nnoremap <C-w>t :tabnew<cr>
 nnoremap <C-w><c-t> mM:tabnew<cr>`M
+
+" LocationList toggle
+nnoremap <leader>l :call LocationListToggle()<cr>
+let g:location_list_is_open = 0
+function! LocationListToggle()
+    if g:location_list_is_open
+        lclose
+        let g:location_list_is_open = 0
+        execute g:location_list_return_to_window . "wincmd w"
+    else
+        let g:location_list_return_to_window = winnr()
+        lopen
+        let g:location_list_is_open = 1
+    endif
+endfunction
 
 " qickfix toggle
 nnoremap <leader>q :call QuickfixToggle()<cr>
@@ -108,6 +128,22 @@ function! QuickfixToggle()
         copen
         let g:quickfix_is_open = 1
     endif
+endfunction
+
+" quickfix autoheight
+au FileType qf call AdjustWindowHeight(3, 31)
+function! AdjustWindowHeight(minheight, maxheight)
+    let l = 1
+    let n_lines = 0
+    let w_width = winwidth(0)
+    while l <= line('$')
+        " number to float for division
+        let l_len = strlen(getline(l)) + 0.0
+        let line_width = l_len/w_width
+        let n_lines += float2nr(ceil(line_width))
+        let l += 1
+    endw
+    exe max([min([n_lines, a:maxheight]), a:minheight]) . "wincmd _"
 endfunction
 
 nnoremap <leader><C-g> :Ggrep <C-r><C-w>
@@ -206,13 +242,16 @@ function! TrimTrailingSpace()
     call setpos('.', save_cursor)
 endfunction
 
-nnoremap <leader>8 :call TrimTrailingSpace()<cr>:w<cr>
+nnoremap <leader>W :call TrimTrailingSpace()<cr>:w<cr>
 
 " fast :w
 nnoremap <Leader>w :w<cr>
 
 " sudo save
 nnoremap <Leader><C-w> :w !sudo tee % > /dev/null<cr>
+
+
+let g:syntastic_python_checkers=['pylint']
 
 
 " TIPS
