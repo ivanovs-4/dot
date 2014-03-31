@@ -15,3 +15,5 @@ if [ -f ~/.bash_aliases_git ]; then
     . ~/.bash_aliases_git
 fi
 
+# alias rd="ssh -4 rasp.dev.yandex.ru -t 'tmux attach || tmux'"
+alias rd="ssh -4 rasp.dev.yandex.ru"

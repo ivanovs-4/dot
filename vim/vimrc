@@ -81,6 +81,11 @@ set history=10240
 " viminfo options.txt 7577
 set viminfo='4000,f100,<4400,:4800,@5500,/5900,%7700
 
+" Change ""-quotes to «»-quotes
+nnoremap <leader>< ?"r<<Nr>>
+
+inoremap <bs> <esc>
+
 nnoremap [R Bi<cr><esc>
 nnoremap ]R Wi<cr><esc>
 

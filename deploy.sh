@@ -11,15 +11,9 @@ rm -rf ~/.vim
 ln -sf ~/dot/vim ~/.vim
 
 ln -sf ~/.vim/vimrc ~/.vimrc
-ln -sf ~/dot/Xmodmap ~/.Xmodmap
-ln -sf ~/dot/zshrc ~/.zshrc
 
 rm -rf ~/.git_template
 ln -sf ~/dot/git_template ~/.git_template
 
-rm -rf ~/.i3
-ln -sf ~/dot/i3 ~/.i3
-
 git submodule init
 git submodule update
-
