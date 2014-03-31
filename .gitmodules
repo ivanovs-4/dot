@@ -115,3 +115,6 @@
 [submodule "vim/bundle/vim-diary-p2"]
 	path = vim/bundle/vim-diary-p2
 	url = git@github.com:ivanovwaltz/vim-diary-p2.git
+[submodule "vim/bundle/nose.vim"]
+	path = vim/bundle/nose.vim
+	url = https://github.com/lambdalisue/nose.vim.git
