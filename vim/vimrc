@@ -20,6 +20,7 @@ set shiftwidth=4
 set expandtab
 set lazyredraw
 set ruler
+set cmdheight=2
 set scrolloff=7
 set sidescrolloff=9
 set display+=lastline
@@ -85,7 +86,20 @@ set viminfo='4000,f100,<4400,:4800,@5500,/5900,%7700
 " Change ""-quotes to «»-quotes
 nnoremap <leader>< ?"r<<Nr>>
 
-inoremap <bs> <esc>
+nnoremap <F2> :MakeGreen %<cr>
+
+nnoremap <F6> :call VimuxRunCommand("python " . shellescape(expand('%'), 1))<cr>
+
+nnoremap <F7> :VimuxRunLastCommand<cr>
+
+" run compiler with vim.dispatch Make
+nnoremap <F8> :Make %<cr>
+
+nnoremap <F9> :Dispatch<cr>
+autocmd FileType python let b:dispatch = 'nosetests % --with-machineout'
+
+" Join function arguments into one line
+nnoremap <F3> :normal vabJ0%cs()kj<cr>
 
 nnoremap [R Bi<cr><esc>
 nnoremap ]R Wi<cr><esc>
@@ -252,6 +266,8 @@ nnoremap <Leader><C-w> :w !sudo tee % > /dev/null<cr>
 
 
 let g:syntastic_python_checkers=['pylint']
+
+let g:vimpipe_silent=1
 
 
 " TIPS

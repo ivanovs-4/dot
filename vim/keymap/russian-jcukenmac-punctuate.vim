@@ -1,10 +1,11 @@
 " Adopted to Mac key layout (by Leonid Shvechikov)
 " Vim Keymap file for russian characters, layout 'jcuken', classical variant
+" Upper row is punctuation symbols without <shift>
 " (compatible with XFree86 'ru' keymap)
 " Useful mainly with utf-8 but may work with other encodings
 
-" Maintainer:   Artem Chuprina <ran@ran.pp.ru>
-" Last Changed: 2001 Jun 23
+" Maintainer:   Sergey Ivanov
+" Last Changed: 2014 Apr 6
 
 " All characters are given literally, conversion to another encoding (e.g.,
 " UTF-8) should work.
@@ -87,11 +88,27 @@ m	ь	CYRILLIC SMALL LETTER SOFT SIGN
 '	э	CYRILLIC SMALL LETTER E
 .	ю	CYRILLIC SMALL LETTER YU
 z	я	CYRILLIC SMALL LETTER YA
-@	«
-#	»
-$	…
-%	:
-^	,
-&	.
-*	;
+1	!
+2	„
+3	“
+4	…
+5	:
+6	,
+7	.
+8	;
+9   (
+0   )
 -   —
+=   =
+!	1
+@	2
+#	3
+$	4
+%	5
+^	6
+&	7
+*	8
+(   9
+)   0
+_   _
++   +
