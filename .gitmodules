@@ -118,3 +118,30 @@
 [submodule "vim/bundle/nose.vim"]
 	path = vim/bundle/nose.vim
 	url = https://github.com/lambdalisue/nose.vim.git
+[submodule "vim/bundle/Conque-Shell"]
+	path = vim/bundle/Conque-Shell
+	url = https://github.com/vim-scripts/Conque-Shell.git
+[submodule "vim/bundle/vim-characterize"]
+	path = vim/bundle/vim-characterize
+	url = git://github.com/tpope/vim-characterize.git
+[submodule "vim/bundle/vim-dispatch"]
+	path = vim/bundle/vim-dispatch
+	url = https://github.com/tpope/vim-dispatch.git
+[submodule "vim/bundle/vim-jdaddy"]
+	path = vim/bundle/vim-jdaddy
+	url = https://github.com/tpope/vim-jdaddy.git
+[submodule "vim/bundle/vim-makegreen"]
+	path = vim/bundle/vim-makegreen
+	url = git@github.com:senyorgivaev/vim-makegreen.git
+[submodule "vim/bundle/vim-markdown"]
+	path = vim/bundle/vim-markdown
+	url = https://github.com/tpope/vim-markdown.git
+[submodule "vim/bundle/vim-pipe"]
+	path = vim/bundle/vim-pipe
+	url = https://github.com/krisajenkins/vim-pipe.git
+[submodule "vim/bundle/vim-rsi"]
+	path = vim/bundle/vim-rsi
+	url = https://github.com/tpope/vim-rsi.git
+[submodule "vim/bundle/vimux"]
+	path = vim/bundle/vimux
+	url = https://github.com/benmills/vimux.git
