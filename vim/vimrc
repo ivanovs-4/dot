@@ -1,9 +1,9 @@
+
 set nocompatible
 execute pathogen#infect()
 syntax on
 filetype plugin on
 filetype plugin indent on
-
 set encoding=utf-8
 
 set autoindent
@@ -88,15 +88,12 @@ nnoremap <leader>< ?"r<<Nr>>
 
 nnoremap <F2> :MakeGreen %<cr>
 
-nnoremap <F6> :call VimuxRunCommand("python " . shellescape(expand('%'), 1))<cr>
+nnoremap <F6> <leader>W :call VimuxRunCommand("python " . shellescape(expand('%'), 1))<cr>
+nnoremap <F7> <leader>W :VimuxRunLastCommand<cr>
 
-nnoremap <F7> :VimuxRunLastCommand<cr>
-
-" run compiler with vim.dispatch Make
-nnoremap <F8> :Make %<cr>
-
-nnoremap <F9> :Dispatch<cr>
-autocmd FileType python let b:dispatch = 'nosetests % --with-machineout'
+" nnoremap <F8> :FocusDispatch 
+" nnoremap <F9> :Dispatch<cr>
+" autocmd FileType python let b:dispatch = 'python %'
 
 " Join function arguments into one line
 nnoremap <F3> :normal vabJ0%cs()kj<cr>
