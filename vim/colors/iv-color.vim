@@ -255,6 +255,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("VertSplit", "004f88", "000000", "reverse")
     call <SID>X("Folded", "b007ff", "000000", "none")
     call <SID>X("FoldColumn", "d2b48c", "4d4d4d", "")
+    call <SID>X("SignColumn","a0a8b0","384048","")
     call <SID>X("Search", "000000", "cd853f", "none")
     call <SID>X("IncSearch", "f5deb3", "cd853f", "")
     call <SID>X("LineNr", "0055aa", "", "")
@@ -288,6 +289,8 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     "Error
     call <SID>X("Todo", "008800", "000000", "")
 
+    call <SID>X("Structure","8fbfdc","","")
+    call <SID>X("Function","fad07a","","")
     " delete functions {{{
     delf <SID>X
     delf <SID>rgb

@@ -5,8 +5,8 @@ alias gc='git commit'
 alias gca='git commit --amend'
 alias gcA='git commit --amend --reuse-message=HEAD'
 alias gm='git merge'
-alias gO='git checkout'
-go() { git checkout $(st.branch_from_task $1) ; }
+alias go='git checkout'
+gO() { git checkout $(st.branch_from_task $1) ; }
 alias gb='git branch'
 alias gbl='git for-each-ref --sort=committerdate refs/heads/ --format="%(refname:short)"'
 alias gri='git rebase -i'

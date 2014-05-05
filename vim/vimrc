@@ -18,7 +18,6 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
-set lazyredraw
 set ruler
 set cmdheight=2
 set scrolloff=7
@@ -40,9 +39,15 @@ set wildmenu
 set wildmode=list:full
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.log
 
+"" Speed up macros
+set lazyredraw
+
 set t_Co=256
 syntax on
-color iv-color
+colorscheme iv-color
+" colorscheme jelleybeans
+" colorscheme kkruby
+
 " russian
 set keymap=russian-jcukenmac-punctuate
 set iminsert=0
@@ -53,9 +58,6 @@ runtime macros/matchit.vim
 
 "" Show full tags when doing search completion
 "set showfulltag
-"
-"" Speed up macros
-"set lazyredraw
 
 " Turn off swap files
 set noswapfile
@@ -71,6 +73,17 @@ set shiftround
 " set ttimeout
 " set ttimeoutlen=50
 
+let g:tmuxline_preset = 'nightly_fox'
+
+" vim-airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
+
 " set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set shell=/bin/bash
 
@@ -83,17 +96,21 @@ set history=10240
 " viminfo options.txt 7577
 set viminfo='4000,f100,<4400,:4800,@5500,/5900,%7700
 
+" easy access to beginning and end of line
+" noremap - ^
+" noremap _ $
+
 " Change ""-quotes to «»-quotes
 nnoremap <leader>< ?"r<<Nr>>
 
 nnoremap <F2> :MakeGreen %<cr>
 
-nnoremap <F6> <leader>W :call VimuxRunCommand("python " . shellescape(expand('%'), 1))<cr>
-nnoremap <F7> <leader>W :VimuxRunLastCommand<cr>
+nnoremap <F6> :wall<cr>:call VimuxRunCommand("python " . shellescape(expand('%'), 1))<cr>
+nnoremap <F7> :wall<cr>:VimuxRunLastCommand<cr>
 
-" nnoremap <F8> :FocusDispatch 
-" nnoremap <F9> :Dispatch<cr>
-" autocmd FileType python let b:dispatch = 'python %'
+nnoremap <F8> :FocusDispatch
+nnoremap <F9> :Dispatch<cr>
+autocmd FileType python let b:dispatch = 'python %'
 
 " Join function arguments into one line
 nnoremap <F3> :normal vabJ0%cs()kj<cr>
@@ -108,8 +125,16 @@ nnoremap <leader>t :!.git/hooks/ctags<cr>
 
 nmap <leader>b dsbdb
 
-nnoremap <C-w>t :tabnew<cr>
-nnoremap <C-w><c-t> mM:tabnew<cr>`M
+" nnoremap <C-w>t :tabnew<cr>
+" nnoremap <C-w><c-t> mM:tabnew<cr>`M
+
+" for dvorak
+" …
+
+nnoremap <leader>c :tabnew<cr>
+nnoremap <leader>t mM:tabnew<cr>`M
+nnoremap <leader>x :tabclose<cr>
+
 
 " LocationList toggle
 nnoremap <leader>l :call LocationListToggle()<cr>
@@ -193,7 +218,7 @@ vnoremap <Leader>s :sort i<cr>
 nnoremap <Leader>j gg0dwJJ<ESC>
 
 " edit ~/.vim/colors/iv-color.vim
-nnoremap <Leader>c :n ~/.vim/colors/iv-color.vim<cr>
+nnoremap <Leader>C :n ~/.vim/colors/iv-color.vim<cr>
 
 " edit reload .vimrc
 nnoremap <Leader>V :n ~/.vim/vimrc<cr>
@@ -262,10 +287,37 @@ nnoremap <Leader>w :w<cr>
 nnoremap <Leader><C-w> :w !sudo tee % > /dev/null<cr>
 
 
-let g:syntastic_python_checkers=['pylint']
+" let g:syntastic_python_checkers=['pylint']
+
+let g:pymode_options = 0
+let g:pymode_trim_whitespaces = 1
+
+let g:pymode_folding = 0
+
+let g:pymode_lint = 1
+let g:pymode_lint_on_write = 0
+let g:pymode_lint_unmodified = 0
+let g:pymode_lint_cwindow = 1
+let g:pymode_lint_on_fly = 0
+let g:pymode_lint_message = 1
+let g:pymode_lint_checkers = ['pylint', 'pep8', 'mccabe']
+let g:pymode_lint_ignore = "F0401,E501,W0403,C0111"
+
+let g:pymode_doc = 1
+let g:pymode_doc_bind = 'K'
+" let g:pymode_rope_show_doc_bind = '<C-c>d'
+let g:pymode_rope_show_doc_bind = ''
 
 let g:vimpipe_silent=1
 
+let g:pymode_rope = 1
+let g:pymode_rope_lookup_project = 1
+
+let g:pymode_rope_goto_definition_bind = '<C-c>g'
+let g:pymode_rope_goto_definition_cmd = 'vnew'
+
+let g:pymode_rope_completion = 0
+let g:pymode_rope_complete_on_dot = 0
 
 " TIPS
 

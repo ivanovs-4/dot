@@ -58,7 +58,7 @@ git_branch_name() {
 # \w  the current working directory, with $HOME abbreviated with a tilde
 
 export LC_ALL="en_US.UTF-8"
-export LANG="ru"
+export LANG="ru.UTF-8"
 
 export CLICOLOR=1
 export LSCOLORS=Gxfxcxdxbxegedabagacad

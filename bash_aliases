@@ -1,5 +1,6 @@
 alias r='cd ../rasp 2>/dev/null || cd ~/work/rasp/rasp'
-alias t='cd ../ticket 2>/dev/null || cd ~/work/rasp/ticket'
+alias t='cd ../ticket 2>/dev/null || cd ~/work/30/ticket'
+alias d='cd ../ticket_daemon 2>/dev/null || cd ~/work/30/ticket_daemon'
 alias f='~/work/tools/fcgi.sh restart'
 alias fd='../tools/tickets.sh restart'
 alias hxd='hexdump -v -e "1/1 \" %02x\"" -e "1/1 \" %_c \n\" "'
