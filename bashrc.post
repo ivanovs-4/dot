@@ -1,16 +1,10 @@
+export CUDA_ROOT=/usr/local/cuda
+export PATH="$CUDA_ROOT/bin:$PATH"
+export LD_LIBRARY_PATH="$CUDA_ROOT/lib:$LD_LIBRARY_PATH"
 
 export DEBFULLNAME="Sergey Ivanov"
 export DEBEMAIL="seiv@yandex-team.ru"
 alias dch='dch --distributor=debian'
-
-if [ -z "$(ps -u $USER | grep gpg-agent)" ] ; then
-  rm -rf "${HOME}/.gnupg/S.gpg-agent"
-  gpg-agent --daemon --use-standard-socket --write-env-file "${HOME}/.gnupg/.gpg-agent-info" --default-cache-ttl 1800 > /dev/null
-fi
-if [ -f "${HOME}/.gnupg/.gpg-agent-info" ]; then
-  . "${HOME}/.gnupg/.gpg-agent-info"
-  export GPG_AGENT_INFO
-fi
 
 export PS1='\n\[\e[0;34m\]\u\[\e[0;35m\]@\[\e[0;34m\]\H\[\e[0;32m\] \[\e[0;32m\]\w\[\e[0;32m\]\[\e[0;33m\]$(git_branch_name)\[\e[0;32m\]\n\[\e[0;31m\]\$\[\e[00m\]'
 git_branch_name() {
