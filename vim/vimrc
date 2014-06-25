@@ -30,7 +30,6 @@ set incsearch
 set ignorecase
 set smartcase
 set laststatus=2
-set nocursorline
 set nowrap
 set linebreak
 set autowriteall
@@ -38,6 +37,11 @@ set autoread
 set wildmenu
 set wildmode=list:full
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.log
+
+set nocursorcolumn
+set nocursorline
+" au WinLeave * set nocursorline
+" au WinEnter * set cursorline
 
 "" Speed up macros
 set lazyredraw
@@ -103,7 +107,7 @@ set viminfo='4000,f100,<4400,:4800,@5500,/5900,%7700
 " Change ""-quotes to «»-quotes
 nnoremap <leader>< ?"r<<Nr>>
 
-nnoremap <F2> :MakeGreen %<cr>
+nnoremap <F2> :Pytest file<cr>
 
 nnoremap <F6> :wall<cr>:call VimuxRunCommand("python " . shellescape(expand('%'), 1))<cr>
 nnoremap <F7> :wall<cr>:VimuxRunLastCommand<cr>
@@ -214,6 +218,8 @@ nnoremap <silent><C-l> :<C-u>nohlsearch<cr><C-l>
 nnoremap <Leader>s :sort i<cr>
 vnoremap <Leader>s :sort i<cr>
 
+au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+
 " compose jira text to commit comment
 nnoremap <Leader>j gg0dwJJ<ESC>
 
@@ -287,37 +293,40 @@ nnoremap <Leader>w :w<cr>
 nnoremap <Leader><C-w> :w !sudo tee % > /dev/null<cr>
 
 
-" let g:syntastic_python_checkers=['pylint']
+let g:syntastic_python_checkers=['pylint']
+let g:syntastic_mode_map = { 'mode': 'passive' }
 
-let g:pymode_options = 0
-let g:pymode_trim_whitespaces = 1
+" pymode
+" let g:pymode_options = 0
+" let g:pymode_trim_whitespaces = 1
 
-let g:pymode_folding = 0
+" let g:pymode_folding = 0
 
-let g:pymode_lint = 1
-let g:pymode_lint_on_write = 0
-let g:pymode_lint_unmodified = 0
-let g:pymode_lint_cwindow = 1
-let g:pymode_lint_on_fly = 0
-let g:pymode_lint_message = 1
-let g:pymode_lint_checkers = ['pylint', 'pep8', 'mccabe']
-let g:pymode_lint_ignore = "F0401,E501,W0403,C0111"
+" let g:pymode_lint = 1
+" let g:pymode_lint_on_write = 0
+" let g:pymode_lint_unmodified = 0
+" let g:pymode_lint_cwindow = 1
+" let g:pymode_lint_on_fly = 0
+" let g:pymode_lint_message = 1
+" let g:pymode_lint_checkers = ['pylint', 'pep8', 'mccabe']
+" let g:pymode_lint_ignore = "F0401,E501,W0403,C0111"
 
-let g:pymode_doc = 1
-let g:pymode_doc_bind = 'K'
-" let g:pymode_rope_show_doc_bind = '<C-c>d'
-let g:pymode_rope_show_doc_bind = ''
+" let g:pymode_doc = 1
+" let g:pymode_doc_bind = 'K'
+" " let g:pymode_rope_show_doc_bind = '<C-c>d'
+" let g:pymode_rope_show_doc_bind = ''
 
-let g:vimpipe_silent=1
+" let g:vimpipe_silent=1
 
-let g:pymode_rope = 1
-let g:pymode_rope_lookup_project = 1
+" let g:pymode_rope = 1
+" let g:pymode_rope_lookup_project = 1
 
-let g:pymode_rope_goto_definition_bind = '<C-c>g'
-let g:pymode_rope_goto_definition_cmd = 'vnew'
+" let g:pymode_rope_goto_definition_bind = '<C-c>g'
+" let g:pymode_rope_goto_definition_cmd = 'vnew'
 
-let g:pymode_rope_completion = 0
-let g:pymode_rope_complete_on_dot = 0
+" let g:pymode_rope_completion = 0
+" let g:pymode_rope_complete_on_dot = 0
+" /pymode
 
 " TIPS
 

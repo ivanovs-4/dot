@@ -252,21 +252,21 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     "DiffDelete
     "DiffText
     "ErrorMsg
-    call <SID>X("VertSplit", "004f88", "000000", "reverse")
     call <SID>X("Folded", "b007ff", "000000", "none")
     call <SID>X("FoldColumn", "d2b48c", "4d4d4d", "")
     call <SID>X("SignColumn","a0a8b0","384048","")
     call <SID>X("Search", "000000", "cd853f", "none")
     call <SID>X("IncSearch", "f5deb3", "cd853f", "")
-    call <SID>X("LineNr", "0055aa", "", "")
-    call <SID>X("CursorLine", "", "000000", "bold")
+    call <SID>X("LineNr", "333333", "", "")
+    call <SID>X("CursorLine", "", "222222", "none")
     call <SID>X("ModeMsg", "daa520", "", "")
     call <SID>X("MoreMsg", "2e8b57", "", "")
     call <SID>X("NonText", "000000", "000000", "bold")
     call <SID>X("Question", "007fff", "", "")
     call <SID>X("Specialkey", "7acd92", "", "")
-    call <SID>X("Statusline", "cc5544", "222222", "bold")
-    call <SID>X("Statuslinenc", "c2bfa5", "333333", "none")
+    call <SID>X("VertSplit", "cc5544", "000000", "none")
+    call <SID>X("Statusline", "ff5544", "000000", "underline,bold")
+    call <SID>X("Statuslinenc", "cc5544", "000000", "underline")
     call <SID>X("Title", "cd5c5c", "", "")
     call <SID>X("Visual", "", "555555", "bold")
     "VisualNOS
@@ -280,7 +280,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("Comment", "67757b", "", "")
     call <SID>X("Constant", "bd876b", "", "")
     call <SID>X("Identifier", "88bb00", "", "none")
-    call <SID>X("Statement", "2570a8", "", "")
+    call <SID>X("Statement", "2550f8", "", "")
     call <SID>X("PreProc", "cd5c5c", "", "")
     call <SID>X("Type", "ccbbbb", "", "bold")
     call <SID>X("Special", "90a65c", "", "")
@@ -290,7 +290,16 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("Todo", "008800", "000000", "")
 
     call <SID>X("Structure","8fbfdc","","")
-    call <SID>X("Function","fad07a","","")
+    call <SID>X("Function","009000","","")
+
+    " User colors
+    call <SID>X("User1", "00ffff", "", "")
+    call <SID>X("User2", "ff00ff", "", "")
+    call <SID>X("User3", "ffff00", "", "")
+
+    call <SID>X("User4", "00ffff", "", "underline")
+    call <SID>X("User5", "ff00ff", "", "underline")
+    call <SID>X("User6", "ffff00", "", "underline")
     " delete functions {{{
     delf <SID>X
     delf <SID>rgb

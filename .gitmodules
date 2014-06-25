@@ -81,7 +81,7 @@
 	url = https://github.com/glts/vim-textobj-indblock.git
 [submodule "vim/bundle/vim-textobj-underscore"]
 	path = vim/bundle/vim-textobj-underscore
-	url = https://github.com/lucapette/vim-textobj-underscore.git
+	url = git@github.com:lucapette/vim-textobj-underscore.git
 [submodule "vim/bundle/vim-textobj-url"]
 	path = vim/bundle/vim-textobj-url
 	url = https://github.com/mattn/vim-textobj-url.git
@@ -151,6 +151,27 @@
 [submodule "vim/bundle/vim-misc"]
 	path = vim/bundle/vim-misc
 	url = https://github.com/xolox/vim-misc.git
-[submodule "vim/bundle/vim-makegreen"]
-	path = vim/bundle/vim-makegreen
-	url = git@github.com:ivanovwaltz/vim-makegreen.git
+[submodule "vim/bundle/ack.vim"]
+	path = vim/bundle/ack.vim
+	url = git@github.com:mileszs/ack.vim.git
+[submodule "vim/bundle/gundo"]
+	path = vim/bundle/gundo
+	url = http://github.com/sjl/gundo.vim.git
+[submodule "vim/bundle/pytest.vim"]
+	path = vim/bundle/pytest.vim
+	url = git@github.com:alfredodeza/pytest.vim.git
+[submodule "vim/bundle/syntastic"]
+	path = vim/bundle/syntastic
+	url = git@github.com:scrooloose/syntastic.git
+[submodule "vim/bundle/vim-editqf"]
+	path = vim/bundle/vim-editqf
+	url = https://github.com/jceb/vim-editqf.git
+[submodule "vim/bundle/vim-textobj-between"]
+	path = vim/bundle/vim-textobj-between
+	url = git@github.com:thinca/vim-textobj-between.git
+[submodule "vim/bundle/vim-textobj-quotes"]
+	path = vim/bundle/vim-textobj-quotes
+	url = git@github.com:beloglazov/vim-textobj-quotes.git
+[submodule "vim/bundle/vim-textobj-variable-segment"]
+	path = vim/bundle/vim-textobj-variable-segment
+	url = https://github.com/Julian/vim-textobj-variable-segment.git
