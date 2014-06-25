@@ -3,7 +3,7 @@
 	url = https://github.com/vim-scripts/indentpython.vim.git
 [submodule "vim/bundle/pythonhelper"]
 	path = vim/bundle/pythonhelper
-	url = https://github.com/vim-scripts/pythonhelper.git
+	url = https://github.com/ivanovwaltz/pythonhelper.git
 [submodule "vim/bundle/screen"]
 	path = vim/bundle/screen
 	url = https://github.com/ervandew/screen.git
