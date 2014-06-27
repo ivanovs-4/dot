@@ -29,7 +29,6 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-set laststatus=2
 set nowrap
 set linebreak
 set autowriteall
@@ -76,6 +75,12 @@ set nrformats-=octal
 set shiftround
 " set ttimeout
 " set ttimeoutlen=50
+
+set laststatus=2
+" set the status line to display some useful information
+set stl=%<\ [%3*%n%H%M%R%W%*]\ %<%F
+set stl+=\ %1*%{TagInStatusLineTag()}%*%=
+set stl+=%5*%l%*/%L\ %5*%v%*
 
 let g:tmuxline_preset = 'nightly_fox'
 
