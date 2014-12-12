@@ -383,3 +383,6 @@ nmap <LocalLeader>a mmvip<LocalLeader>a`m
 
 
 " git@github.com:vim-scripts/vim-auto-save.git
+
+" Detect *.md files as markdown filetype
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
