@@ -20,6 +20,7 @@
 [init]
     templatedir = ~/.git_template
 
+# http://www.man-online.org/page/1-dpkg-mergechangelogs
 [merge "dpkg-mergechangelogs"]
     name = debian/changelog merge driver
     driver = dpkg-mergechangelogs -m %O %A %B %A
