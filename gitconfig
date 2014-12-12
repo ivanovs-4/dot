@@ -1,21 +1,34 @@
 [user]
-	name = Sergey Ivanov
-	email = seiv@yandex-team.ru
+    name = Sergey Ivanov
+    email = seiv@yandex-team.ru
 [core]
-	editor = vim
-	excludesfile = ~/.gitignore_global
+    editor = vim
+    excludesfile = ~/.gitignore_global
 [color]
-	interactive = true
-	diff = auto
-	status = auto
-	branch = auto
+    interactive = true
+    diff = auto
+    status = auto
+    branch = auto
 [push]
-	default = tracking
+    default = tracking
 
 [grep]
-	lineNumber = true
+    lineNumber = true
 [diff]
-	algorithm = histogram
+    algorithm = histogram
 
 [init]
-	templatedir = ~/.git_template
+    templatedir = ~/.git_template
+
+[merge "dpkg-mergechangelogs"]
+    name = debian/changelog merge driver
+    driver = dpkg-mergechangelogs -m %O %A %B %A
+
+[merge]
+    tool = diffconflicts
+[mergetool "diffconflicts"]
+    cmd = diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
+    trustExitCode = true
+    keepBackup = false
+[mergetool]
+    keepBackup = false
