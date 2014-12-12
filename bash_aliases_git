@@ -1,6 +1,6 @@
 alias ga='git add --all'
 alias gA='git add'
-alias gs='git status'
+alias g='git status'
 alias gc='git commit'
 alias gca='git commit --amend'
 alias gcA='git commit --amend --reuse-message=HEAD'
