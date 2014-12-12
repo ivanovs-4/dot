@@ -271,14 +271,6 @@ function! Preserve(command)
   call cursor(l, c)
 endfunction
 
-" orgmode use
-let g:org_agenda_files = ['~/org/*.org']
-let g:org_heading_shade_leading_stars = 0
-
-" let g:org_todo_keywords = [['TODO(t)', 'FOCUS(f)', '|', 'DONE(d)']]
-
-" nmap <leader>6 :TagbarToggle<cr>
-
 function! GitAutocommitCurrentFile()
     :w!
     :lcd %:h
@@ -317,38 +309,6 @@ nnoremap <Leader><C-w> :w !sudo tee % > /dev/null<cr>
 
 let g:syntastic_python_checkers=['pylint']
 let g:syntastic_mode_map = { 'mode': 'passive' }
-
-" pymode
-" let g:pymode_options = 0
-" let g:pymode_trim_whitespaces = 1
-
-" let g:pymode_folding = 0
-
-" let g:pymode_lint = 1
-" let g:pymode_lint_on_write = 0
-" let g:pymode_lint_unmodified = 0
-" let g:pymode_lint_cwindow = 1
-" let g:pymode_lint_on_fly = 0
-" let g:pymode_lint_message = 1
-" let g:pymode_lint_checkers = ['pylint', 'pep8', 'mccabe']
-" let g:pymode_lint_ignore = "F0401,E501,W0403,C0111"
-
-" let g:pymode_doc = 1
-" let g:pymode_doc_bind = 'K'
-" " let g:pymode_rope_show_doc_bind = '<C-c>d'
-" let g:pymode_rope_show_doc_bind = ''
-
-" let g:vimpipe_silent=1
-
-" let g:pymode_rope = 1
-" let g:pymode_rope_lookup_project = 1
-
-" let g:pymode_rope_goto_definition_bind = '<C-c>g'
-" let g:pymode_rope_goto_definition_cmd = 'vnew'
-
-" let g:pymode_rope_completion = 0
-" let g:pymode_rope_complete_on_dot = 0
-" /pymode
 
 " TIPS
 
@@ -420,3 +380,6 @@ vnoremap <LocalLeader>a "vy :call VimuxSlime()<cr>
 
 " Select current paragraph and send it to tmux
 nmap <LocalLeader>a mmvip<LocalLeader>a`m
+
+
+" git@github.com:vim-scripts/vim-auto-save.git
