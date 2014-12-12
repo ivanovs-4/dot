@@ -20,7 +20,7 @@ set shiftwidth=4
 set expandtab
 set ruler
 set cmdheight=2
-set scrolloff=7
+set scrolloff=4
 set sidescrolloff=9
 set display+=lastline
 set clipboard+=unnamed
@@ -36,6 +36,7 @@ set autoread
 set wildmenu
 set wildmode=list:full
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.log
+set shortmess=atI
 
 set nocursorcolumn
 set nocursorline
@@ -47,15 +48,19 @@ set lazyredraw
 
 set t_Co=256
 syntax on
-colorscheme iv-color
-" colorscheme jelleybeans
-" colorscheme kkruby
+
+set background=dark
+colorscheme iv-solarized
+
+highlight ColorColumn ctermbg=magenta ctermfg=black
+call matchadd('ColorColumn', '\%80v', 100)
 
 " russian
-set keymap=russian-jcukenmac-punctuate
+set keymap=russian-jcukenmac
 set iminsert=0
 set imsearch=0
 highlight lCursor guifg=NONE guibg=Cyan
+
 
 runtime macros/matchit.vim
 
@@ -76,24 +81,22 @@ set shiftround
 " set ttimeout
 " set ttimeoutlen=50
 
+exec "set listchars=tab:\uBB\uBB,nbsp:~,trail:⊔,extends:>,precedes:<"
+set list
+
 set laststatus=2
 " set the status line to display some useful information
 set stl=%<\ [%3*%n%H%M%R%W%*]\ %<%F
 set stl+=\ %1*%{TagInStatusLineTag()}%*%=
 set stl+=%5*%l%*/%L\ %5*%v%*
 
-let g:tmuxline_preset = 'nightly_fox'
 
-" vim-airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+" git@github.com:vim-scripts/vim-auto-save.git
+let g:auto_save = 1  " enable AutoSave on Vim startup
+let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
+let g:auto_save_silent = 1  " do not display the auto-save notification
 
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-let g:airline_symbols.space = "\ua0"
 
-" set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set shell=/bin/bash
 
 set fileformats+=unix
@@ -105,9 +108,20 @@ set history=10240
 " viminfo options.txt 7577
 set viminfo='4000,f100,<4400,:4800,@5500,/5900,%7700
 
+
+" hiding list ^\.*/tmp/\.*$,^\.*\.so$,^\.*\.swp$,^\.*\.zip$,^\.*\.pyc$,^\.*\.log$,^\.\.\=/\=$,^\.,\.pid$,\.sock.$
+
 " easy access to beginning and end of line
 " noremap - ^
 " noremap _ $
+
+nnoremap ' `
+nnoremap ` '
+
+nnoremap ; :
+nnoremap : ;
+vnoremap ; :
+vnoremap : ;
 
 " Change ""-quotes to «»-quotes
 nnoremap <leader>< ?"r<<Nr>>
@@ -160,6 +174,9 @@ function! LocationListToggle()
     endif
 endfunction
 
+
+autocmd QuickFixCmdPost * bot cwindow " open quickfix at bottom
+
 " qickfix toggle
 nnoremap <leader>q :call QuickfixToggle()<cr>
 let g:quickfix_is_open = 0
@@ -176,7 +193,7 @@ function! QuickfixToggle()
 endfunction
 
 " quickfix autoheight
-au FileType qf call AdjustWindowHeight(3, 31)
+au FileType qf call AdjustWindowHeight(3, 21)
 function! AdjustWindowHeight(minheight, maxheight)
     let l = 1
     let n_lines = 0
@@ -223,10 +240,10 @@ nnoremap <silent><C-l> :<C-u>nohlsearch<cr><C-l>
 nnoremap <Leader>s :sort i<cr>
 vnoremap <Leader>s :sort i<cr>
 
-au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+" au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+au FileType javascript setlocal equalprg=python\ -m\ json.tool\ 2>/dev/null
 
-" compose jira text to commit comment
-nnoremap <Leader>j gg0dwJJ<ESC>
+nnoremap <Leader>8 <esc>:!autopep8 --in-place --aggressive --aggressive %<cr>
 
 " edit ~/.vim/colors/iv-color.vim
 nnoremap <Leader>C :n ~/.vim/colors/iv-color.vim<cr>
@@ -289,10 +306,10 @@ function! TrimTrailingSpace()
     call setpos('.', save_cursor)
 endfunction
 
-nnoremap <leader>W :call TrimTrailingSpace()<cr>:w<cr>
+nnoremap <leader>w :call TrimTrailingSpace()<cr>:w<cr>
 
 " fast :w
-nnoremap <Leader>w :w<cr>
+nnoremap <Leader>W :w<cr>
 
 " sudo save
 nnoremap <Leader><C-w> :w !sudo tee % > /dev/null<cr>
@@ -379,3 +396,27 @@ function! QuickfixFilenames()
   return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
 endfunction
 
+
+" git-gutter
+" To change the hunk-jumping maps:
+nmap [h <Plug>GitGutterPrevHunk
+nmap ]h <Plug>GitGutterNextHunk
+
+" To change the hunk-staging/reverting maps:
+nmap <Leader>hs <Plug>GitGutterStageHunk
+nmap <Leader>hr <Plug>GitGutterRevertHunk
+
+" TO TURN ON LINE HIGHLIGHTING BY DEFAULT
+" let g:gitgutter_highlight_lines = 1
+
+
+function! VimuxSlime()
+    call VimuxSendText(@v)
+    call VimuxSendKeys("Enter")
+endfunction
+
+" If text is selected, save it in the v buffer and send that buffer it to tmux
+vnoremap <LocalLeader>a "vy :call VimuxSlime()<cr>
+
+" Select current paragraph and send it to tmux
+nmap <LocalLeader>a mmvip<LocalLeader>a`m
