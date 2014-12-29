@@ -47,11 +47,10 @@ set nocursorline
 "" Speed up macros
 set lazyredraw
 
-set t_Co=256
-syntax on
-
+syntax enable
 set background=dark
-colorscheme iv-solarized
+let g:solarized_termtrans=1
+colorscheme solarized
 
 highlight ColorColumn ctermbg=magenta ctermfg=black
 call matchadd('ColorColumn', '\%80v', 100)

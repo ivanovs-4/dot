@@ -10,8 +10,7 @@ pyf() { find . -name '*.py' -exec grep -nH "$1" {} \; ; }
 
 alias sl="sed 's/&quot;/\"/g' | sed -r 's/></>\n</g' | less"
 
-alias tmux="tmux -2"
-alias tm="tmux -2 attach || tmux -2"
+alias tm="tmux attach || tmux"
 
 if [ -f ~/.bash_aliases_git ]; then
     . ~/.bash_aliases_git

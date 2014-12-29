@@ -130,3 +130,6 @@
 [submodule "vim/bundle/vim-textobj-variable-segment"]
 	path = vim/bundle/vim-textobj-variable-segment
 	url = https://github.com/Julian/vim-textobj-variable-segment.git
+[submodule "vim/bundle/vim-colors-solarized"]
+	path = vim/bundle/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
