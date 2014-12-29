@@ -128,11 +128,8 @@ nnoremap <leader>< ?"r<<Nr>>
 
 nnoremap <F2> :Pytest file<cr>
 
-nnoremap <F6> :wall<cr>:call VimuxRunCommand("python " . shellescape(expand('%'), 1))<cr>
 nnoremap <F7> :wall<cr>:VimuxRunLastCommand<cr>
 
-nnoremap <F8> :FocusDispatch
-nnoremap <F9> :Dispatch<cr>
 autocmd FileType python let b:dispatch = 'python %'
 
 " Join function arguments into one line
