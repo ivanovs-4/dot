@@ -56,7 +56,9 @@ highlight ColorColumn ctermbg=magenta ctermfg=black
 call matchadd('ColorColumn', '\%80v', 100)
 
 " russian
-set keymap=russian-jcukenmac
+set keymap=russian-jcuken
+" set keymap=russian-jcukenmac
+
 set iminsert=0
 set imsearch=0
 highlight lCursor guifg=NONE guibg=Cyan
