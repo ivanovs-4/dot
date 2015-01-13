@@ -33,3 +33,5 @@
     keepBackup = false
 [mergetool]
     keepBackup = false
+[rerere]
+	enabled = true
