@@ -83,7 +83,7 @@ set shiftround
 " set ttimeout
 " set ttimeoutlen=50
 
-exec "set listchars=tab:\uBB\uBB,nbsp:~,trail:⊔,extends:>,precedes:<"
+exec "set listchars=tab:›-,nbsp:~,trail:·,extends:>,precedes:<"
 set list
 
 set laststatus=2
@@ -234,6 +234,10 @@ nnoremap Y y$
 
 " hide search matches
 nnoremap <silent><C-l> :<C-u>nohlsearch<cr><C-l>
+
+" underline text for markdown header
+" ----------------------------------
+nnoremap <leader>- yypVr-:<C-u>nohlsearch<cr><C-l>o
 
 " sort
 nnoremap <Leader>s :sort i<cr>
