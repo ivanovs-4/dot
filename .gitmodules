@@ -136,3 +136,6 @@
 [submodule "vim/bundle/VOom"]
 	path = vim/bundle/VOom
 	url = git@github.com:vim-voom/VOoM.git
+[submodule "vim/bundle/vim-conflicted"]
+	path = vim/bundle/vim-conflicted
+	url = git@github.com:christoomey/vim-conflicted.git
