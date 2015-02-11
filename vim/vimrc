@@ -117,14 +117,6 @@ set viminfo='4000,f100,<4400,:4800,@5500,/5900,%7700
 " noremap - ^
 " noremap _ $
 
-nnoremap ' `
-nnoremap ` '
-
-nnoremap ; :
-nnoremap : ;
-vnoremap ; :
-vnoremap : ;
-
 " Change ""-quotes to «»-quotes
 nnoremap <leader>< ?"r<<Nr>>
 
