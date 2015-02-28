@@ -18,8 +18,6 @@ set fileformats+=unix
 set history=10240
 set hlsearch
 set ignorecase
-set iminsert=0
-set imsearch=0
 set incsearch
 set laststatus=2
 set linebreak
@@ -48,6 +46,12 @@ set wildmode=list:full
 
 set path=**
 set suffixesadd+=.py
+
+set keymap=russian-jcuken
+" По умолчанию латинская раскладка
+set iminsert=0
+" По умолчанию латинская раскладка при поиске
+set imsearch=0
 
 "" Turn off swap files
 set noswapfile
@@ -87,17 +91,13 @@ set background=dark
 " set ttimeout
 " set ttimeoutlen=50
 
-"let g:solarized_termtrans=1
-" colorscheme solarized
+let g:solarized_termtrans=1
+colorscheme solarized
 
-" highlight ColorColumn ctermbg=magenta ctermfg=black
-" call matchadd('ColorColumn', '\%80v', 100)
+ highlight ColorColumn ctermbg=magenta ctermfg=black
+ call matchadd('ColorColumn', '\%80v', 100)
 
 highlight lCursor guifg=NONE guibg=Cyan
-
-" russian
-set keymap=russian-jcuken
-" set keymap=russian-jcukenmac
 
 " set the status line to display some useful information
 set stl=%<\ [%3*%n%H%M%R%W%*]\ %<%F
