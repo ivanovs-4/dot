@@ -1,130 +1,110 @@
 set nocompatible
 execute pathogen#infect()
-syntax on
-filetype plugin on
 filetype plugin indent on
+filetype plugin on
+syntax enable
+syntax on
+set autoindent
+set autoread
+set autowriteall
+set backspace=indent,eol,start
+set clipboard+=unnamed
+set cmdheight=2
+set complete-=i
+set display+=lastline
 set encoding=utf-8
+set expandtab
+set fileformats+=unix
+set history=10240
+set hlsearch
+set ignorecase
+set iminsert=0
+set imsearch=0
+set incsearch
+set laststatus=2
+set linebreak
+set nocursorcolumn
+set nocursorline
+set nojoinspaces
+set nowrap
+set number
+set ruler
+set scrolloff=4
+set shell=/bin/bash
+set shiftwidth=4
+set shortmess=atI
+set showcmd
+set showmatch
+set sidescrolloff=9
+set smartcase
+set smartindent
+set smarttab
+set softtabstop=4
+set tabpagemax=9
+set tabstop=4
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.log
+set wildmenu
+set wildmode=list:full
+
+set path=**
+set suffixesadd+=.py
+
+"" Turn off swap files
+set noswapfile
+set nobackup
+set updatecount=0
+
+" viminfo options.txt 7577
+set viminfo='4000,f100,<4400,:4800,@5500,/5900,%7700
+
+" turn off octal numbers for <C-a>, <C-x>
+set nrformats-=octal
+set shiftround
+
+set list
+exec "set listchars=tab:›-,nbsp:~,trail:·,extends:>,precedes:<"
+
+runtime macros/matchit.vim
+
+"" Speed up macros
+" set lazyredraw
+
+"" Show full tags when doing search completion
+"set showfulltag
+
+
+""""""""""""""
+""" Iv-specific
+""""""""""""""
 
 let mapleader=' '
 
-set autoindent
-set smartindent
-set backspace=indent,eol,start
-set complete-=i
-set showmatch
-set smarttab
-set showcmd
-set number
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-set ruler
-set cmdheight=2
-set scrolloff=4
-set sidescrolloff=9
-set display+=lastline
-set clipboard+=unnamed
-set nojoinspaces
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-set nowrap
-set linebreak
-set autowriteall
-set autoread
-set wildmenu
-set wildmode=list:full
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.log
-set shortmess=atI
-
-set nocursorcolumn
-set nocursorline
 " au WinLeave * set nocursorline
 " au WinEnter * set cursorline
 
-"" Speed up macros
-set lazyredraw
-
-syntax enable
 set background=dark
-let g:solarized_termtrans=1
-colorscheme solarized
 
-highlight ColorColumn ctermbg=magenta ctermfg=black
-call matchadd('ColorColumn', '\%80v', 100)
+" set ttimeout
+" set ttimeoutlen=50
+
+"let g:solarized_termtrans=1
+" colorscheme solarized
+
+" highlight ColorColumn ctermbg=magenta ctermfg=black
+" call matchadd('ColorColumn', '\%80v', 100)
+
+highlight lCursor guifg=NONE guibg=Cyan
 
 " russian
 set keymap=russian-jcuken
 " set keymap=russian-jcukenmac
 
-set iminsert=0
-set imsearch=0
-highlight lCursor guifg=NONE guibg=Cyan
-
-
-runtime macros/matchit.vim
-
-"" Show full tags when doing search completion
-"set showfulltag
-
-" Turn off swap files
-set noswapfile
-set nobackup
-set updatecount=0
-
-set path=**
-set suffixesadd+=.py
-
-" turn off octal numbers for <C-a>, <C-x>
-set nrformats-=octal
-set shiftround
-" set ttimeout
-" set ttimeoutlen=50
-
-exec "set listchars=tab:›-,nbsp:~,trail:·,extends:>,precedes:<"
-set list
-
-set laststatus=2
 " set the status line to display some useful information
 set stl=%<\ [%3*%n%H%M%R%W%*]\ %<%F
 set stl+=\ %1*%{TagInStatusLineTag()}%*%=
 set stl+=%5*%l%*/%L\ %5*%v%*
 
-
-" git@github.com:vim-scripts/vim-auto-save.git
-let g:auto_save = 1  " enable AutoSave on Vim startup
-let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
-let g:auto_save_silent = 1  " do not display the auto-save notification
-
-
-set shell=/bin/bash
-
-set fileformats+=unix
-
-set tabpagemax=9
-
-set history=10240
-
-" viminfo options.txt 7577
-set viminfo='4000,f100,<4400,:4800,@5500,/5900,%7700
-
-
-" hiding list ^\.*/tmp/\.*$,^\.*\.so$,^\.*\.swp$,^\.*\.zip$,^\.*\.pyc$,^\.*\.log$,^\.\.\=/\=$,^\.,\.pid$,\.sock.$
-
-" easy access to beginning and end of line
-" noremap - ^
-" noremap _ $
-
-" Change ""-quotes to «»-quotes
-nnoremap <leader>< ?"r<<Nr>>
-
-nnoremap <F2> :Pytest file<cr>
-
 nnoremap <F7> :wall<cr>:VimuxRunLastCommand<cr>
-
-autocmd FileType python let b:dispatch = 'python %'
 
 " Join function arguments into one line
 nnoremap <F3> :normal vabJ0%cs()kj<cr>
@@ -137,99 +117,21 @@ nnoremap ]r a<cr><esc>ge
 
 nnoremap <leader>t :!.git/hooks/ctags<cr>
 
-nmap <leader>b dsbdb
-
-" nnoremap <C-w>t :tabnew<cr>
-" nnoremap <C-w><c-t> mM:tabnew<cr>`M
-
-" for dvorak
-" …
-
 nnoremap <leader>c :tabnew<cr>
 nnoremap <leader>t mM:tabnew<cr>`M
 nnoremap <leader>x :tabclose<cr>
-
-
-" LocationList toggle
-nnoremap <leader>l :call LocationListToggle()<cr>
-let g:location_list_is_open = 0
-function! LocationListToggle()
-    if g:location_list_is_open
-        lclose
-        let g:location_list_is_open = 0
-        execute g:location_list_return_to_window . "wincmd w"
-    else
-        let g:location_list_return_to_window = winnr()
-        lopen
-        let g:location_list_is_open = 1
-    endif
-endfunction
-
-
-autocmd QuickFixCmdPost * bot cwindow " open quickfix at bottom
-
-" qickfix toggle
-nnoremap <leader>q :call QuickfixToggle()<cr>
-let g:quickfix_is_open = 0
-function! QuickfixToggle()
-    if g:quickfix_is_open
-        cclose
-        let g:quickfix_is_open = 0
-        execute g:quickfix_return_to_window . "wincmd w"
-    else
-        let g:quickfix_return_to_window = winnr()
-        copen
-        let g:quickfix_is_open = 1
-    endif
-endfunction
-
-" quickfix autoheight
-au FileType qf call AdjustWindowHeight(3, 21)
-function! AdjustWindowHeight(minheight, maxheight)
-    let l = 1
-    let n_lines = 0
-    let w_width = winwidth(0)
-    while l <= line('$')
-        " number to float for division
-        let l_len = strlen(getline(l)) + 0.0
-        let line_width = l_len/w_width
-        let n_lines += float2nr(ceil(line_width))
-        let l += 1
-    endw
-    exe max([min([n_lines, a:maxheight]), a:minheight]) . "wincmd _"
-endfunction
 
 nnoremap <leader><C-g> :Ggrep <C-r><C-w>
 
 " rearrange arguments each to one line
 nnoremap <leader>4  %mm%lc`m<cr><cr><c-o>k<c-r>"<esc>kmmjjmnk:s/\v\,\zs\s/\r/g<cr>`nv`m=
 
-" ex_mode/history-scrollers.vim
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
-
-inoremap <C-U> <C-G>u<C-U>
-
-" The & command is a synonym for :s, which repeats the last substitution. Unfortunately,
-" if any flags were used, the & command disregards them, meaning that the outcome
-"     could be quite different from the previous substitution.
-"     Making & trigger the :&& command is more useful. It preserves flags and therefore
-"     produces more consistent results. These mappings fix the & command in Normal
-"     mode and create a Visual mode equivalent:
-nnoremap & :&&<CR>
-xnoremap & :&&<CR>
-
-xnoremap . :normal .<CR>
-
-" Y baheave as C and D
-nnoremap Y y$
-
-" hide search matches
-nnoremap <silent><C-l> :<C-u>nohlsearch<cr><C-l>
-
-" underline text for markdown header
+" Make underline text for markdown header
 " ----------------------------------
 nnoremap <leader>- yypVr-:<C-u>nohlsearch<cr><C-l>o
+
+" Detect *.md files as markdown filetype
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " sort
 nnoremap <Leader>s :sort i<cr>
@@ -302,13 +204,115 @@ nnoremap <Leader>W :w<cr>
 nnoremap <Leader><C-w> :w !sudo tee % > /dev/null<cr>
 
 
+
+""""""""""""""
+""" Plugins settings
+""""""""""""""
+
+nnoremap <F2> :Pytest file<cr>
+
 let g:syntastic_python_checkers=['pylint']
 let g:syntastic_mode_map = { 'mode': 'passive' }
 
-" TIPS
-
 " mapping for tpope/vim-fugitive
 nnoremap <Leader>G :Gstatus<cr>
+
+
+" git-gutter
+" To change the hunk-jumping maps:
+nmap [h <Plug>GitGutterPrevHunk
+nmap ]h <Plug>GitGutterNextHunk
+
+" To change the hunk-staging/reverting maps:
+nmap <Leader>hs <Plug>GitGutterStageHunk
+nmap <Leader>hr <Plug>GitGutterRevertHunk
+
+" TO TURN ON LINE HIGHLIGHTING BY DEFAULT
+" let g:gitgutter_highlight_lines = 1
+
+
+
+""""""""""""""
+""" Useful
+""""""""""""""
+
+" ex_mode/history-scrollers.vim
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
+" Y baheave as C and D
+nnoremap Y y$
+
+" hide search matches
+nnoremap <silent><C-l> :<C-u>nohlsearch<cr><C-l>
+
+" The & command is a synonym for :s, which repeats the last substitution. Unfortunately,
+" if any flags were used, the & command disregards them, meaning that the outcome
+"     could be quite different from the previous substitution.
+"     Making & trigger the :&& command is more useful. It preserves flags and therefore
+"     produces more consistent results. These mappings fix the & command in Normal
+"     mode and create a Visual mode equivalent:
+nnoremap & :&&<CR>
+xnoremap & :&&<CR>
+
+xnoremap . :normal .<CR>
+
+inoremap <C-U> <C-G>u<C-U>
+
+
+" LocationList toggle
+nnoremap <leader>l :call LocationListToggle()<cr>
+let g:location_list_is_open = 0
+function! LocationListToggle()
+    if g:location_list_is_open
+        lclose
+        let g:location_list_is_open = 0
+        execute g:location_list_return_to_window . "wincmd w"
+    else
+        let g:location_list_return_to_window = winnr()
+        lopen
+        let g:location_list_is_open = 1
+    endif
+endfunction
+
+" autocmd QuickFixCmdPost * bot cwindow " open quickfix at bottom
+
+" qickfix toggle
+nnoremap <leader>q :call QuickfixToggle()<cr>
+let g:quickfix_is_open = 0
+function! QuickfixToggle()
+    if g:quickfix_is_open
+        cclose
+        let g:quickfix_is_open = 0
+        execute g:quickfix_return_to_window . "wincmd w"
+    else
+        let g:quickfix_return_to_window = winnr()
+        copen
+        let g:quickfix_is_open = 1
+    endif
+endfunction
+
+" quickfix autoheight
+au FileType qf call AdjustWindowHeight(3, 21)
+function! AdjustWindowHeight(minheight, maxheight)
+    let l = 1
+    let n_lines = 0
+    let w_width = winwidth(0)
+    while l <= line('$')
+        " number to float for division
+        let l_len = strlen(getline(l)) + 0.0
+        let line_width = l_len/w_width
+        let n_lines += float2nr(ceil(line_width))
+        let l += 1
+    endw
+    exe max([min([n_lines, a:maxheight]), a:minheight]) . "wincmd _"
+endfunction
+
+
+
+""""""""""""""
+""" TIPS
+""""""""""""""
 
 " go to defn of tag under the cursor
 fun! MatchCaseTag()
@@ -350,34 +354,3 @@ function! QuickfixFilenames()
   endfor
   return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
 endfunction
-
-
-" git-gutter
-" To change the hunk-jumping maps:
-nmap [h <Plug>GitGutterPrevHunk
-nmap ]h <Plug>GitGutterNextHunk
-
-" To change the hunk-staging/reverting maps:
-nmap <Leader>hs <Plug>GitGutterStageHunk
-nmap <Leader>hr <Plug>GitGutterRevertHunk
-
-" TO TURN ON LINE HIGHLIGHTING BY DEFAULT
-" let g:gitgutter_highlight_lines = 1
-
-
-function! VimuxSlime()
-    call VimuxSendText(@v)
-    call VimuxSendKeys("Enter")
-endfunction
-
-" If text is selected, save it in the v buffer and send that buffer it to tmux
-vnoremap <LocalLeader>j "vy :call VimuxSlime()<cr>
-
-" Select current paragraph and send it to tmux
-nmap <LocalLeader>j mmvip<LocalLeader>j`m
-
-
-" git@github.com:vim-scripts/vim-auto-save.git
-
-" Detect *.md files as markdown filetype
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
