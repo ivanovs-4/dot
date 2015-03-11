@@ -240,9 +240,6 @@ nmap <Leader>hr <Plug>GitGutterRevertHunk
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
-" Y baheave as C and D
-nnoremap Y y$
-
 " hide search matches
 nnoremap <silent><C-l> :<C-u>nohlsearch<cr><C-l>
 
