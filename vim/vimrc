@@ -47,7 +47,8 @@ set wildmode=list:full
 set path=**
 set suffixesadd+=.py
 
-set keymap=russian-jcuken
+" /usr/share/vim/vim73/keymap/russian-jcuken.vim
+set keymap=russian-jcukeniv
 " По умолчанию латинская раскладка
 set iminsert=0
 " По умолчанию латинская раскладка при поиске
