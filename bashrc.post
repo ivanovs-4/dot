@@ -6,13 +6,64 @@ export DEBFULLNAME="Sergey Ivanov"
 export DEBEMAIL="seiv@yandex-team.ru"
 alias dch='dch --distributor=debian'
 
-export PS1='\n\[\e[0;34m\]\u\[\e[0;35m\]@\[\e[0;34m\]\H\[\e[0;32m\] \[\e[0;32m\]\w\[\e[0;32m\]\[\e[0;33m\]$(git_branch_name)\[\e[0;32m\]\n\[\e[0;31m\]\$\[\e[00m\]'
+# prompt
 git_branch_name() {
     branch=$(git branch 2>/dev/null | grep '^\* ' | cut -c3-)
     if [ "$branch" ]; then
         echo -n ' ('$branch')'
     fi
 }
+
+hg_dirty() {
+    dirty=$(hg status 2> /dev/null | awk '$1 == "?" { unknown = 1 }
+           $1 != "?" { changed = 1 }
+           END {
+             if (changed) printf "!"
+             else if (unknown) printf "?"
+             }')
+    if [ "$dirty" ]; then
+        echo -n " ($dirty)"
+    else
+        echo -n " 🗸"
+    fi
+}
+
+hg_book() {
+    # hg branch 2> /dev/null | \
+    #     awk '{ printf "\033[37;0m on \033[35;40m" $1 }'
+    book=$(hg bookmarks 2> /dev/null | awk '/\*/ { printf $2 }')
+    if [ "$book" ]; then
+        echo -n " @$book"
+    fi
+}
+
+DEFAULT="[37;40m"
+PINK="[35;40m"
+BLUE="[34;40m"
+GREEN="[32;40m"
+ORANGE="[33;40m"
+RED="[31;40m"
+
+# export PS1='\n\
+# \e${BLUE}\u\
+# \e${PINK}@\
+# \e${BLUE}\H\
+# \e${GREEN} \
+# \e${GREEN}\w\
+# \e${GREEN}\
+# \e${ORANGE}\
+# $(git_branch_name) \
+# $(hg_book) \
+# $(hg_dirty) \
+# \e${GREEN}\n\
+# \e${RED}\$\
+# \[\e[00m\]'
+
+
+# export PS1='\n\[\e[0;34m\]\u\[\e[0;35m\]@\[\e[0;34m\]\H\[\e[0;32m\] \[\e[0;32m\]\w\[\e[0;32m\]\[\e[0;33m\]$(git_branch_name)\[\e[0;32m\]\n\[\e[0;31m\]\$\[\e[00m\]'
+# export PS1='\n\u at \h in \w $(hg_in_repo)$(hg_book)$(hg_dirty)\n$ '
+
+export PS1='\n\[\e[0;34m\]\u\[\e[0;35m\]@\[\e[0;34m\]\H\[\e[0;32m\] \[\e[0;32m\]\w\[\e[0;32m\]\[\e[0;33m\]$(git_branch_name)$(hg_book)$(hg_dirty)\[\e[0;00m\]\n\[\e[0;31m\]\$\[\e[00m\]'
 
 # \[\e[A;B;Cm\], где
 # A - тип шрифта:
