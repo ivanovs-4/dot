@@ -117,7 +117,8 @@ nnoremap ]R Wi<cr><esc>
 nnoremap [r i<cr><esc>ge
 nnoremap ]r a<cr><esc>ge
 
-nnoremap <leader>t :!.git/hooks/ctags<cr>
+nnoremap <leader>T :!ctags --links=yes --tag-relative -R --exclude=.git --languages=-javascript,sql<cr>
+nnoremap <leader>i :!isort %<cr>
 
 nnoremap <leader>c :tabnew<cr>
 nnoremap <leader>t mM:tabnew<cr>`M
