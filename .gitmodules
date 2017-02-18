@@ -1,9 +1,6 @@
 [submodule "vim/bundle/indentpython"]
 	path = vim/bundle/indentpython
 	url = https://github.com/vim-scripts/indentpython.vim.git
-[submodule "vim/bundle/pythonhelper"]
-	path = vim/bundle/pythonhelper
-	url = https://github.com/ivanovwaltz/pythonhelper.git
 [submodule "vim/bundle/vim-abolish"]
 	path = vim/bundle/vim-abolish
 	url = https://github.com/tpope/vim-abolish.git
