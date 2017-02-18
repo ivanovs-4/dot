@@ -4,6 +4,13 @@ filetype plugin indent on
 filetype plugin on
 syntax enable
 syntax on
+set encoding=utf-8
+
+" printers
+set popt=paper:letter,header:0
+set pdev=14
+
+set foldlevel=4
 set autoindent
 set autoread
 set autowriteall
@@ -15,7 +22,7 @@ set display+=lastline
 set encoding=utf-8
 set expandtab
 set fileformats+=unix
-set history=10240
+" set history=10240
 set hlsearch
 set ignorecase
 set incsearch
@@ -77,7 +84,32 @@ runtime macros/matchit.vim
 "" Show full tags when doing search completion
 "set showfulltag
 
+nnoremap cop :set <C-R>=&paste ? 'nopaste' : 'paste'<CR><CR>
+
 autocmd FileType cfg set commentstring=#\ %s
+
+"" Haskell
+autocmd FileType cabal set commentstring=--\ %s
+autocmd FileType yesod_hs set commentstring=--\ %s
+au BufRead,BufNewFile models set filetype=yesod_hs
+au BufRead,BufNewFile routes set filetype=yesod_hs
+au BufRead,BufNewFile *.hamlet set filetype=html
+
+" " Haskell Config
+let g:ghcmod_ghc_options = ['-Wall', '-Werror']
+nnoremap <F8> :w<cr>:GhcModCheck<cr>
+
+let g:hindent_style = 'chris-done'
+
+
+" au BufEnter *.hs compiler ghc
+" let g:ghc="stack ghc"
+" let g:haddock_browser = "xdg-open"
+" let g:haddock_browser_callformat = "%s %s"
+
+" autocmd QuickFixCmdPost [^l]* nested cwindow
+" autocmd QuickFixCmdPost    l* nested lwindow
+
 
 """"""""""""""
 """ Iv-specific
@@ -87,26 +119,26 @@ let mapleader=' '
 
 " au WinLeave * set nocursorline
 " au WinEnter * set cursorline
+" set history=10240
 
-set background=dark
 
 " set ttimeout
 " set ttimeoutlen=50
 
 let g:solarized_termtrans=1
-colorscheme solarized
+set background=dark
+" set background=light
+colorscheme solarized_iv
 
- highlight ColorColumn ctermbg=magenta ctermfg=black
- call matchadd('ColorColumn', '\%80v', 100)
+" highlight ColorColumn ctermbg=magenta ctermfg=black
+" call matchadd('ColorColumn', '\%80v', 100)
 
 highlight lCursor guifg=NONE guibg=Cyan
 
 " set the status line to display some useful information
 set stl=%<\ [%3*%n%H%M%R%W%*]\ %<%F
-set stl+=\ %1*%{TagInStatusLineTag()}%*%=
+" set stl+=\ %1*%{TagInStatusLineTag()}%*%=
 set stl+=%5*%l%*/%L\ %5*%v%*
-
-nnoremap <F7> :wall<cr>:VimuxRunLastCommand<cr>
 
 " Join function arguments into one line
 nnoremap <F3> :normal vabJ0%cs()kj<cr>
@@ -123,8 +155,27 @@ nnoremap <leader>i :!isort %<cr>
 nnoremap <leader>c :tabnew<cr>
 nnoremap <leader>t mM:tabnew<cr>`M
 nnoremap <leader>x :tabclose<cr>
+nnoremap <leader>wc :tabclose<cr>
 
 nnoremap <leader><C-g> :Ggrep <C-r><C-w>
+
+
+nnoremap gy gT
+nnoremap <leader>; :
+vnoremap <leader>; :
+nnoremap <C-;> :
+nnoremap <leader>fs :w<cr>
+nnoremap <leader>fS :call TrimTrailingSpace()<cr>:w<cr>
+
+nnoremap <leader>sgg :Ggrep
+nnoremap <leader>/ :Ggrep
+nnoremap <leader>fj :edit %:h/<cr>
+nnoremap <leader>tp :tabprevious<cr>
+nnoremap <leader>tn :tabnext<cr>
+nnoremap <leader>w/ :vsplit<cr>
+nnoremap <leader>w- :split<cr>
+nnoremap <leader>wd :close<cr>
+
 
 " rearrange arguments each to one line
 nnoremap <leader>4  %mm%lc`m<cr><cr><c-o>k<c-r>"<esc>kmmjjmnk:s/\v\,\zs\s/\r/g<cr>`nv`m=
@@ -157,6 +208,9 @@ nnoremap <Leader>v :update<cr>:so $MYVIMRC<cr>
 
 " git diff
 nnoremap <Leader>d :!clear; git diff -U2 HEAD<cr>
+
+" hg diff
+nnoremap <Leader>h :!clear; hg diff<cr>
 
 " Strip trailing whitespace {{{2
 function! Preserve(command)
@@ -198,10 +252,15 @@ function! TrimTrailingSpace()
     call setpos('.', save_cursor)
 endfunction
 
-nnoremap <leader>w :call TrimTrailingSpace()<cr>:w<cr>
+nnoremap <F2> :wall<cr>
+nnoremap <leader><F2> :call TrimTrailingSpace()<cr>:w<cr>
+
+nnoremap <F7> :wall<cr>:VimuxRunCommand('!!')<cr>
+" nnoremap <leader>w :call TrimTrailingSpace()<cr>:w<cr>
+nnoremap <leader>fs :w<cr>
 
 " fast :w
-nnoremap <Leader>W :w<cr>
+" nnoremap <Leader>W :w<cr>
 
 " sudo save
 nnoremap <Leader><C-w> :w !sudo tee % > /dev/null<cr>
@@ -211,8 +270,6 @@ nnoremap <Leader><C-w> :w !sudo tee % > /dev/null<cr>
 """"""""""""""
 """ Plugins settings
 """"""""""""""
-
-nnoremap <F2> :Pytest file<cr>
 
 let g:syntastic_python_checkers=['pylint']
 let g:syntastic_mode_map = { 'mode': 'passive' }
