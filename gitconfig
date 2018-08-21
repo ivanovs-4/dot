@@ -1,6 +1,6 @@
 [user]
     name = Sergey Ivanov
-    email = seiv@yandex-team.ru
+    email = ivanovs-4@yandex.ru
 [core]
     editor = vim
     excludesfile = ~/.gitignore_global
@@ -34,4 +34,4 @@
 [mergetool]
     keepBackup = false
 [rerere]
-	enabled = true
+    enabled = true
