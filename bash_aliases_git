@@ -16,6 +16,8 @@ alias gp='git pull'
 alias gl='git log --graph'
 alias grh='git reset HEAD --hard'
 alias gcp='git cherry-pick'
+alias ginit='git init && git add --all && git commit -m Initial && git log -n1'
+alias gpb='cat <(gbl|tail -n2) <(gb|grep "\*"|cut -d" " -f2)|uniq|head -n-1|tail -n1|xargs git checkout'
 
 alias gb.commits='for e in $(git branch | cut -c 3- | grep RASP); do echo $e; git log $e -n 1 --oneline; echo ""; done'
 alias gb.pushremote='branch=$(git branch | grep "\* " | cut -c3-) && git push -u seiv $branch'
