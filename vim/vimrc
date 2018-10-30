@@ -16,27 +16,27 @@ set autoread
 set autowriteall
 set backspace=indent,eol,start
 set clipboard+=unnamed
-set cmdheight=2
+set cmdheight=1
 set complete-=i
 set display+=lastline
 set encoding=utf-8
 set expandtab
 set fileformats+=unix
-" set history=10240
+set history=8192
 set hlsearch
 set ignorecase
 set incsearch
-set laststatus=2
+set laststatus=0
 set linebreak
 set nocursorcolumn
 set nocursorline
 set nojoinspaces
 set nowrap
-set number
+set nonumber
 set ruler
 set scrolloff=4
-set shell=/bin/bash
-set shiftwidth=4
+" set sidescrolloff=40
+set shell=/run/current-system/sw/bin/bash
 set shortmess=atI
 set showcmd
 set showmatch
@@ -44,9 +44,10 @@ set sidescrolloff=9
 set smartcase
 set smartindent
 set smarttab
-set softtabstop=4
+set tabstop=8
+set softtabstop=8
+set shiftwidth=2
 set tabpagemax=9
-set tabstop=4
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.log
 set wildmenu
 set wildmode=list:full
@@ -54,8 +55,10 @@ set wildmode=list:full
 set path=**
 set suffixesadd+=.py
 
+" set iskeyword=a-z,A-Z,_,.,39
+
 " /usr/share/vim/vim73/keymap/russian-jcuken.vim
-set keymap=russian-jcukeniv
+set keymap=russian-jcukeniv2
 " По умолчанию латинская раскладка
 set iminsert=0
 " По умолчанию латинская раскладка при поиске
@@ -74,12 +77,21 @@ set nrformats-=octal
 set shiftround
 
 set list
-exec "set listchars=tab:›-,nbsp:~,trail:·,extends:>,precedes:<"
+" exec "set listchars=tab:›-,nbsp:~,trail:·,extends:>,precedes:<"
+exec "set listchars=tab:›-,nbsp:~,trail:∙,extends:>,precedes:<"
 
 runtime macros/matchit.vim
 
 "" Speed up macros
 " set lazyredraw
+
+" let g:ctrlp_match_window = 'order:ttb'
+let g:ctrlp_match_window = 'order:btt'
+" let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript', 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']
+" let g:ctrlp_extensions = ['dir', 'tag', 'buffertag', 'mixed']
+" let g:ctrlp_extensions = ['buffertag']
+
+let g:EasyGrepFilesToExclude=".*,.git,.hg,.stack-work"
 
 "" Show full tags when doing search completion
 "set showfulltag
@@ -87,6 +99,9 @@ runtime macros/matchit.vim
 nnoremap cop :set <C-R>=&paste ? 'nopaste' : 'paste'<CR><CR>
 
 autocmd FileType cfg set commentstring=#\ %s
+autocmd FileType cfg set commentstring=#\ %s
+autocmd FileType toml set commentstring=#\ %s
+" autocmd FileType nix set commentstring=#\ %s
 
 "" Haskell
 autocmd FileType cabal set commentstring=--\ %s
@@ -94,13 +109,17 @@ autocmd FileType yesod_hs set commentstring=--\ %s
 au BufRead,BufNewFile models set filetype=yesod_hs
 au BufRead,BufNewFile routes set filetype=yesod_hs
 au BufRead,BufNewFile *.hamlet set filetype=html
+au BufRead,BufNewFile *.abi set filetype=json
+au BufRead,BufNewFile *.toml set filetype=toml
+
+autocmd FileType c set commentstring=//\ %s
+autocmd FileType cpp set commentstring=//\ %s
 
 " " Haskell Config
 let g:ghcmod_ghc_options = ['-Wall', '-Werror']
 nnoremap <F8> :w<cr>:GhcModCheck<cr>
 
-let g:hindent_style = 'chris-done'
-
+" let g:hindent_style = 'chris-done'
 
 " au BufEnter *.hs compiler ghc
 " let g:ghc="stack ghc"
@@ -110,6 +129,8 @@ let g:hindent_style = 'chris-done'
 " autocmd QuickFixCmdPost [^l]* nested cwindow
 " autocmd QuickFixCmdPost    l* nested lwindow
 
+" To disable remappiong of `ge` with vim-mmarkdown
+map <Plug> <Plug>Markdown_EditUrlUnderCursor
 
 """"""""""""""
 """ Iv-specific
@@ -119,7 +140,6 @@ let mapleader=' '
 
 " au WinLeave * set nocursorline
 " au WinEnter * set cursorline
-" set history=10240
 
 
 " set ttimeout
@@ -128,6 +148,7 @@ let mapleader=' '
 let g:solarized_termtrans=1
 set background=dark
 " set background=light
+" colorscheme solarized
 colorscheme solarized_iv
 
 " highlight ColorColumn ctermbg=magenta ctermfg=black
@@ -137,48 +158,56 @@ highlight lCursor guifg=NONE guibg=Cyan
 
 " set the status line to display some useful information
 set stl=%<\ [%3*%n%H%M%R%W%*]\ %<%F
-" set stl+=\ %1*%{TagInStatusLineTag()}%*%=
-set stl+=%5*%l%*/%L\ %5*%v%*
+set stl+=\ %5*%l%*/%L\ %5*%v%*
 
-" Join function arguments into one line
-nnoremap <F3> :normal vabJ0%cs()kj<cr>
-
-nnoremap [R Bi<cr><esc>
-nnoremap ]R Wi<cr><esc>
-
-nnoremap [r i<cr><esc>ge
-nnoremap ]r a<cr><esc>ge
-
-nnoremap <leader>T :!ctags --links=yes --tag-relative -R --exclude=.git --languages=-javascript,sql<cr>
 nnoremap <leader>i :!isort %<cr>
+
+nnoremap <leader>e :windo e<cr>
 
 nnoremap <leader>c :tabnew<cr>
 nnoremap <leader>t mM:tabnew<cr>`M
-nnoremap <leader>x :tabclose<cr>
-nnoremap <leader>wc :tabclose<cr>
+nnoremap <leader>td :tabclose<cr>
+nnoremap <leader>tD :tabclose!<cr>
 
-nnoremap <leader><C-g> :Ggrep <C-r><C-w>
+nnoremap <F3> :Dispatch<cr>
 
-
-nnoremap gy gT
+" nnoremap gy gT
 nnoremap <leader>; :
 vnoremap <leader>; :
-nnoremap <C-;> :
-nnoremap <leader>fs :w<cr>
-nnoremap <leader>fS :call TrimTrailingSpace()<cr>:w<cr>
 
-nnoremap <leader>sgg :Ggrep
-nnoremap <leader>/ :Ggrep
+" require fzf and fzf.vim
+nnoremap <leader>f :Files<cr>
+nnoremap <leader>gc :Commits<cr>
+nnoremap <leader>gbc :BCommits<cr>
+
+nnoremap <leader>bb :CtrlPBuffer<cr>
 nnoremap <leader>fj :edit %:h/<cr>
-nnoremap <leader>tp :tabprevious<cr>
-nnoremap <leader>tn :tabnext<cr>
+nnoremap <leader>bd :bdel<cr>
+nnoremap <leader>bD :bdel!<cr>
+
+nnoremap <leader>bn :bnext<cr>
+nnoremap <leader>bN :bnext!<cr>
+nnoremap <leader>bp :bprev<cr>
+nnoremap <leader>bP :bprev!<cr>
+
 nnoremap <leader>w/ :vsplit<cr>
 nnoremap <leader>w- :split<cr>
 nnoremap <leader>wd :close<cr>
+nnoremap <leader>sip vip:sort i<cr>
 
+let g:haskell_indent_disable = 1
+
+nnoremap gr ciw<C-r>0<esc>b
+
+" cd ~/.vim/bundle && git clone https://github.com/rking/ag.vim
+" let g:ag_prg="ag --vimgrep"
+let g:ag_working_path_mode="r"
+" cd ~/.vim/bundle && git clone https://github.com/ivanovs-4/vim-action-ag
+" let g:vim_action_ag_escape_chars = '#%.^$*+?()[{\\|'
+nnoremap <leader>/ :Ag
 
 " rearrange arguments each to one line
-nnoremap <leader>4  %mm%lc`m<cr><cr><c-o>k<c-r>"<esc>kmmjjmnk:s/\v\,\zs\s/\r/g<cr>`nv`m=
+" nnoremap <leader>4  %mm%lc`m<cr><cr><c-o>k<c-r>"<esc>kmmjjmnk:s/\v\,\zs\s/\r/g<cr>`nv`m=
 
 " Make underline text for markdown header
 " ----------------------------------
@@ -190,6 +219,9 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " sort
 nnoremap <Leader>s :sort i<cr>
 vnoremap <Leader>s :sort i<cr>
+
+" Y should behave like D and C
+noremap Y y$
 
 " au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
 au FileType javascript setlocal equalprg=python\ -m\ json.tool\ 2>/dev/null
@@ -255,9 +287,11 @@ endfunction
 nnoremap <F2> :wall<cr>
 nnoremap <leader><F2> :call TrimTrailingSpace()<cr>:w<cr>
 
-nnoremap <F7> :wall<cr>:VimuxRunCommand('!!')<cr>
-" nnoremap <leader>w :call TrimTrailingSpace()<cr>:w<cr>
-nnoremap <leader>fs :w<cr>
+nnoremap <F3> :wall<cr>:VimuxRunCommand(":reload\rmain")<cr>
+nnoremap <F4> :wall<cr>:VimuxRunCommand(':reload')<cr>
+nnoremap <F5> :wall<cr>:VimuxRunCommand('!!')<cr>
+nnoremap <leader>fs :call TrimTrailingSpace()<cr>:w<cr>
+nnoremap <leader>fS :w<cr>
 
 " fast :w
 " nnoremap <Leader>W :w<cr>
@@ -271,12 +305,12 @@ nnoremap <Leader><C-w> :w !sudo tee % > /dev/null<cr>
 """ Plugins settings
 """"""""""""""
 
-let g:syntastic_python_checkers=['pylint']
 let g:syntastic_mode_map = { 'mode': 'passive' }
 
-" mapping for tpope/vim-fugitive
-nnoremap <Leader>G :Gstatus<cr>
-
+let g:syntastic_mode_map = { 'mode': 'passive' }
+let g:syntastic_haskell_checkers = ['hdevtools', 'hlint', 'liquid']
+let g:vim_annotations_offset = '/.liquid/'
+" let g:syntastic_haskell_liquid_args = "--diff"
 
 " git-gutter
 " To change the hunk-jumping maps:
@@ -291,7 +325,6 @@ nmap <Leader>hr <Plug>GitGutterRevertHunk
 " let g:gitgutter_highlight_lines = 1
 
 
-
 """"""""""""""
 """ Useful
 """"""""""""""
@@ -301,7 +334,8 @@ cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
 " hide search matches
-nnoremap <silent><C-l> :<C-u>nohlsearch<cr><C-l>
+" Отучаюсь жать ctrl-l
+" nnoremap <silent><C-l> :<C-u>nohlsearch<cr><C-l>
 
 " The & command is a synonym for :s, which repeats the last substitution. Unfortunately,
 " if any flags were used, the & command disregards them, meaning that the outcome
@@ -317,54 +351,12 @@ xnoremap . :normal .<CR>
 inoremap <C-U> <C-G>u<C-U>
 
 
-" LocationList toggle
-nnoremap <leader>l :call LocationListToggle()<cr>
-let g:location_list_is_open = 0
-function! LocationListToggle()
-    if g:location_list_is_open
-        lclose
-        let g:location_list_is_open = 0
-        execute g:location_list_return_to_window . "wincmd w"
-    else
-        let g:location_list_return_to_window = winnr()
-        lopen
-        let g:location_list_is_open = 1
-    endif
-endfunction
+" " autocmd QuickFixCmdPost * bot cwindow " open quickfix at bottom
 
-" autocmd QuickFixCmdPost * bot cwindow " open quickfix at bottom
-
-" qickfix toggle
-nnoremap <leader>q :call QuickfixToggle()<cr>
-let g:quickfix_is_open = 0
-function! QuickfixToggle()
-    if g:quickfix_is_open
-        cclose
-        let g:quickfix_is_open = 0
-        execute g:quickfix_return_to_window . "wincmd w"
-    else
-        let g:quickfix_return_to_window = winnr()
-        copen
-        let g:quickfix_is_open = 1
-    endif
-endfunction
-
-" quickfix autoheight
-au FileType qf call AdjustWindowHeight(3, 21)
-function! AdjustWindowHeight(minheight, maxheight)
-    let l = 1
-    let n_lines = 0
-    let w_width = winwidth(0)
-    while l <= line('$')
-        " number to float for division
-        let l_len = strlen(getline(l)) + 0.0
-        let line_width = l_len/w_width
-        let n_lines += float2nr(ceil(line_width))
-        let l += 1
-    endw
-    exe max([min([n_lines, a:maxheight]), a:minheight]) . "wincmd _"
-endfunction
-
+nmap <leader>q <Plug>(qf_qf_toggle)
+nmap <leader>l <Plug>(qf_loc_toggle)
+" let g:qf_max_height = 21
+let g:dispatch_quickfix_height = 13
 
 
 """"""""""""""
@@ -395,11 +387,6 @@ endfunction
 
 xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
-
-" recursively vimgrep for word under cursor or selection if you hit leader-star
-nmap <leader>* :execute 'noautocmd vimgrep /\V ' . substitute(escape(expand("<cword>"), '\'), '\n', '\\n', 'g') . '/ **/*.py'<CR>
-vmap <leader>* :<C-u>call <SID>VSetSearch()<CR>:execute 'noautocmd vimgrep /' . @/ . '/ **/*.py'<CR>
-
 
 " TIP 'nelstrom/vim-qargs'
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
