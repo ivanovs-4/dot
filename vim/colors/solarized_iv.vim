@@ -137,6 +137,8 @@
 " Terminals that support italics
 let s:terms_italic=[
             \"rxvt",
+            \"xterm",
+            \"xterm-256color",
             \"gnome-terminal"
             \]
 " For reference only, terminals are known to be incomptible.
@@ -150,7 +152,7 @@ if has("gui_running")
 else
     let s:terminal_italic=0 " terminals will be guilty until proven compatible
     for term in s:terms_italic
-        if $TERM_PROGRAM =~ term
+        if $TERM =~ term
             let s:terminal_italic=1
         endif
     endfor
@@ -205,7 +207,7 @@ function! s:SetOption(name,default)
     endif
 endfunction
 
-if ($TERM_PROGRAM ==? "apple_terminal" && &t_Co < 256)
+if ($TERM ==? "apple_terminal" && &t_Co < 256)
     let s:solarized_termtrans_default = 1
 else
     let s:solarized_termtrans_default = 0
@@ -474,7 +476,7 @@ exe "let s:fg_cyan      = ' ".s:vmode."fg=".s:cyan   ."'"
 
 exe "let s:fmt_none     = ' ".s:vmode."=NONE".          " term=NONE".    "'"
 exe "let s:fmt_bold     = ' ".s:vmode."=NONE".s:b.      " term=NONE".s:b."'"
-exe "let s:fmt_bldi     = ' ".s:vmode."=NONE".s:b.      " term=NONE".s:b."'"
+exe "let s:fmt_bldi     = ' ".s:vmode."=NONE".s:b.s:i   " term=NONE".s:b.s:i."'"
 exe "let s:fmt_undr     = ' ".s:vmode."=NONE".s:u.      " term=NONE".s:u."'"
 exe "let s:fmt_undb     = ' ".s:vmode."=NONE".s:u.s:b.  " term=NONE".s:u.s:b."'"
 exe "let s:fmt_undi     = ' ".s:vmode."=NONE".s:u.      " term=NONE".s:u."'"
@@ -484,6 +486,7 @@ exe "let s:fmt_ital     = ' ".s:vmode."=NONE".s:i.      " term=NONE".s:i."'"
 exe "let s:fmt_stnd     = ' ".s:vmode."=NONE".s:s.      " term=NONE".s:s."'"
 exe "let s:fmt_revr     = ' ".s:vmode."=NONE".s:r.      " term=NONE".s:r."'"
 exe "let s:fmt_revb     = ' ".s:vmode."=NONE".s:r.s:b.  " term=NONE".s:r.s:b."'"
+exe "let s:fmt_revbi    = ' ".s:vmode."=NONE".s:r.s:b.s:i.  " term=NONE".s:r.s:b.s:i."'"
 " revbb (reverse bold for bright colors) is only set to actual bold in low
 " color terminals (t_co=8, such as OS X Terminal.app) and should only be used
 " with colors 8-15.
@@ -538,7 +541,7 @@ endif
 
 exe "hi! Normal"         .s:fmt_none   .s:fg_base0  .s:bg_back
 
-exe "hi! Comment"        .s:fmt_ital   .s:fg_base01 .s:bg_none
+exe "hi! Comment"        .s:fmt_none   .s:fg_base03 .s:bg_none
 "       *Comment         any comment
 
 exe "hi! Constant"       .s:fmt_none   .s:fg_cyan   .s:bg_none
@@ -609,16 +612,16 @@ else
     exe "hi! SpecialKey" .s:fmt_bold   .s:fg_base00 .s:bg_base02
     exe "hi! NonText"    .s:fmt_bold   .s:fg_base00 .s:bg_none
 endif
-exe "hi! StatusLine"     .s:fmt_none   .s:fg_base00 .s:bg_base02 .s:fmt_revbb
-exe "hi! StatusLineNC"   .s:fmt_none   .s:fg_base03 .s:bg_base02 .s:fmt_revbb
-exe "hi! Visual"         .s:fmt_none   .s:fg_base01 .s:bg_base03 .s:fmt_revbb
+exe "hi! StatusLine"     .s:fmt_none   .s:fg_base00 .s:bg_base02
+exe "hi! StatusLineNC"   .s:fmt_none   .s:fg_base0 .s:bg_base02
+exe "hi! Visual"         .s:fmt_none   .s:fg_none   .s:bg_base03
 exe "hi! Directory"      .s:fmt_none   .s:fg_blue   .s:bg_none
 exe "hi! ErrorMsg"       .s:fmt_revr   .s:fg_red    .s:bg_none
-exe "hi! IncSearch"      .s:fmt_stnd   .s:fg_orange .s:bg_none
-exe "hi! Search"         .s:fmt_revr   .s:fg_base01 .s:bg_none
+exe "hi! IncSearch"      .s:fmt_revbi  .s:fg_none   .s:bg_none
+exe "hi! Search"         .s:fmt_bldi   .s:fg_none   .s:bg_none
 exe "hi! MoreMsg"        .s:fmt_none   .s:fg_blue   .s:bg_none
 exe "hi! ModeMsg"        .s:fmt_none   .s:fg_blue   .s:bg_none
-exe "hi! LineNr"         .s:fmt_none   .s:fg_base01 .s:bg_base02
+exe "hi! LineNr"         .s:fmt_none   .s:fg_base03 .s:bg_base02
 exe "hi! Question"       .s:fmt_bold   .s:fg_cyan   .s:bg_none
 if ( has("gui_running") || &t_Co > 8 )
     exe "hi! VertSplit"  .s:fmt_none   .s:fg_base00 .s:bg_base00
@@ -664,9 +667,9 @@ exe "hi! Pmenu"          .s:fmt_none   .s:fg_base0  .s:bg_base02  .s:fmt_revbb
 exe "hi! PmenuSel"       .s:fmt_none   .s:fg_base01 .s:bg_base2   .s:fmt_revbb
 exe "hi! PmenuSbar"      .s:fmt_none   .s:fg_base2  .s:bg_base0   .s:fmt_revbb
 exe "hi! PmenuThumb"     .s:fmt_none   .s:fg_base0  .s:bg_base03  .s:fmt_revbb
-exe "hi! TabLine"        .s:fmt_undr   .s:fg_base0  .s:bg_base02  .s:sp_base0
-exe "hi! TabLineFill"    .s:fmt_undr   .s:fg_base0  .s:bg_base02  .s:sp_base0
-exe "hi! TabLineSel"     .s:fmt_undr   .s:fg_base01 .s:bg_base2   .s:sp_base0  .s:fmt_revbbu
+exe "hi! TabLine"        .s:fmt_none   .s:fg_base03 .s:bg_none    .s:sp_none
+exe "hi! TabLineFill"    .s:fmt_none   .s:fg_none   .s:bg_none    .s:sp_none
+exe "hi! TabLineSel"     .s:fmt_none   .s:fg_base01 .s:bg_none    .s:sp_none
 exe "hi! CursorColumn"   .s:fmt_none   .s:fg_none   .s:bg_base03
 exe "hi! CursorLine"     .s:fmt_uopt   .s:fg_none   .s:bg_base02  .s:sp_base1
 exe "hi! ColorColumn"    .s:fmt_none   .s:fg_none   .s:bg_base02

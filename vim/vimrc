@@ -26,13 +26,13 @@ set history=8192
 set hlsearch
 set ignorecase
 set incsearch
-set laststatus=0
+set laststatus=2
 set linebreak
 set nocursorcolumn
 set nocursorline
 set nojoinspaces
 set nowrap
-set nonumber
+set number
 set ruler
 set scrolloff=4
 " set sidescrolloff=40
@@ -76,6 +76,11 @@ set viminfo='4000,f100,<4400,:4800,@5500,/5900,%7700
 set nrformats-=octal
 set shiftround
 
+set undofile
+set undodir=$HOME/.cache/vim/undo
+silent !mkdir -p $HOME/.cache/vim/undo > /dev/null 2>&1
+
+
 set list
 " exec "set listchars=tab:›-,nbsp:~,trail:·,extends:>,precedes:<"
 exec "set listchars=tab:›-,nbsp:~,trail:∙,extends:>,precedes:<"
@@ -86,14 +91,12 @@ runtime macros/matchit.vim
 " set lazyredraw
 
 " let g:ctrlp_match_window = 'order:ttb'
-let g:ctrlp_match_window = 'order:btt'
+" let g:ctrlp_match_window = 'order:btt'
 " let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript', 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']
 " let g:ctrlp_extensions = ['dir', 'tag', 'buffertag', 'mixed']
 " let g:ctrlp_extensions = ['buffertag']
 
-let g:EasyGrepFilesToExclude=".*,.git,.hg,.stack-work"
-
-"" Show full tags when doing search completion
+"" show full tags when doing search completion
 "set showfulltag
 
 nnoremap cop :set <C-R>=&paste ? 'nopaste' : 'paste'<CR><CR>
@@ -166,8 +169,10 @@ nnoremap <leader>e :windo e<cr>
 
 nnoremap <leader>c :tabnew<cr>
 nnoremap <leader>t mM:tabnew<cr>`M
-nnoremap <leader>td :tabclose<cr>
-nnoremap <leader>tD :tabclose!<cr>
+" nnoremap <leader>td :tabclose<cr>
+" nnoremap <leader>tD :tabclose!<cr>
+nnoremap <leader>x :tabclose<cr>
+nnoremap <leader>X :tabclose!<cr>
 
 nnoremap <F3> :Dispatch<cr>
 
@@ -175,29 +180,48 @@ nnoremap <F3> :Dispatch<cr>
 nnoremap <leader>; :
 vnoremap <leader>; :
 
+" git
 " require fzf and fzf.vim
-nnoremap <leader>f :Files<cr>
 nnoremap <leader>gc :Commits<cr>
 nnoremap <leader>gbc :BCommits<cr>
 
-nnoremap <leader>bb :CtrlPBuffer<cr>
+" search
+nnoremap <leader>sbt :BTags<cr>
+nnoremap <leader>st :Tags<cr>
+
+" files
+nnoremap <leader>f :Files<cr>   " fsf
+" nnoremap <leader>f :CtrlP<cr>
 nnoremap <leader>fj :edit %:h/<cr>
-nnoremap <leader>bd :bdel<cr>
-nnoremap <leader>bD :bdel!<cr>
+
+" buffers navigate
+" nnoremap <leader>bb :CtrlPBuffer<cr>
+nnoremap <leader>bb :Buffers<cr>  " fsf
 
 nnoremap <leader>bn :bnext<cr>
 nnoremap <leader>bN :bnext!<cr>
 nnoremap <leader>bp :bprev<cr>
 nnoremap <leader>bP :bprev!<cr>
+" buffers closing
+nnoremap <leader>bd :bdel<cr>
+nnoremap <leader>bD :bdel!<cr>
+
 
 nnoremap <leader>w/ :vsplit<cr>
 nnoremap <leader>w- :split<cr>
 nnoremap <leader>wd :close<cr>
 nnoremap <leader>sip vip:sort i<cr>
+nmap     <leader>sii vii:sort i<cr>
 
 let g:haskell_indent_disable = 1
 
-nnoremap gr ciw<C-r>0<esc>b
+nnoremap grw ciw<C-r>0<esc>b
+nnoremap grW ciW<C-r>0<esc>b
+
+" add haskell import from 0 buffer
+nmap <leader>pi oimport <c-r>0<esc> sii
+
+nmap <F2> :call CurtineIncSw()<CR>
 
 " cd ~/.vim/bundle && git clone https://github.com/rking/ag.vim
 " let g:ag_prg="ag --vimgrep"
@@ -216,9 +240,9 @@ nnoremap <leader>- yypVr-:<C-u>nohlsearch<cr><C-l>o
 " Detect *.md files as markdown filetype
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-" sort
-nnoremap <Leader>s :sort i<cr>
-vnoremap <Leader>s :sort i<cr>
+" " sort
+" nnoremap <Leader>s :sort i<cr>
+" vnoremap <Leader>s :sort i<cr>
 
 " Y should behave like D and C
 noremap Y y$
@@ -284,8 +308,8 @@ function! TrimTrailingSpace()
     call setpos('.', save_cursor)
 endfunction
 
-nnoremap <F2> :wall<cr>
-nnoremap <leader><F2> :call TrimTrailingSpace()<cr>:w<cr>
+" nnoremap <F2> :wall<cr>
+" nnoremap <leader><F2> :call TrimTrailingSpace()<cr>:w<cr>
 
 nnoremap <F3> :wall<cr>:VimuxRunCommand(":reload\rmain")<cr>
 nnoremap <F4> :wall<cr>:VimuxRunCommand(':reload')<cr>

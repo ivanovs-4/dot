@@ -28,3 +28,14 @@ alias tm="tmux attach || tmux"
 if [ -f ~/.bash_aliases_git ]; then
     . ~/.bash_aliases_git
 fi
+
+
+# make compact jq output
+# move comma
+# collect closing }
+# move join alone , with next {
+# move object up to opening {
+
+alias cj="sed -zEe 's/\n(\s*)  \},/ }\n\1,/g' | sed -z -E -e 's/\n\s*\}/ }/g' | sed -z -E -e 's/(\n\s*\{\s*)\n\s*/\1/g' | sed -zEe 's/(\n\s*,)\s*\n\s*\{/\1 {/g'"
+alias cj="sed -zEe 's/\n(\s*)  \},/ }\n\1,/g' | sed -z -E -e 's/\n\s*\}/ }/g' | sed -z -E -e 's/(\n\s*\{)\s*\n\s*/\1 /g' | sed -zEe 's/(\n\s*,)\s*\n\s*\{/\1 {/g'"
+
