@@ -136,3 +136,36 @@
 [submodule "vim/bundle/vim-conflicted"]
 	path = vim/bundle/vim-conflicted
 	url = git@github.com:christoomey/vim-conflicted.git
+[submodule "vim/bundle/ag.vim"]
+	path = vim/bundle/ag.vim
+	url = https://github.com/rking/ag.vim
+[submodule "vim/bundle/fzf.vim"]
+	path = vim/bundle/fzf.vim
+	url = https://github.com/junegunn/fzf.vim.git
+[submodule "vim/bundle/fzf"]
+	path = vim/bundle/fzf
+	url = https://github.com/junegunn/fzf.git
+[submodule "vim/bundle/haskell-vim"]
+	path = vim/bundle/haskell-vim
+	url = https://github.com/neovimhaskell/haskell-vim
+[submodule "vim/bundle/vim-action-ag"]
+	path = vim/bundle/vim-action-ag
+	url = https://github.com/ivanovs-4/vim-action-ag
+[submodule "vim/bundle/vim-dispatch"]
+	path = vim/bundle/vim-dispatch
+	url = https://github.com/tpope/vim-dispatch
+[submodule "vim/bundle/vim-indent-object"]
+	path = vim/bundle/vim-indent-object
+	url = https://github.com/michaeljsmith/vim-indent-object.git
+[submodule "vim/bundle/vim-markdown"]
+	path = vim/bundle/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown.git
+[submodule "vim/bundle/vim-nix"]
+	path = vim/bundle/vim-nix
+	url = https://github.com/LnL7/vim-nix.git
+[submodule "vim/bundle/vim-qf"]
+	path = vim/bundle/vim-qf
+	url = https://github.com/romainl/vim-qf
+[submodule "vim/bundle/vim-tmux"]
+	path = vim/bundle/vim-tmux
+	url = https://github.com/tmux-plugins/vim-tmux.git
